@@ -8,5 +8,17 @@
     "mongoose": "^7.4.0",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1"
-  }
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module"
 }
