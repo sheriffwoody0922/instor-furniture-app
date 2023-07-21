@@ -1,33 +1,30 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import EditBtn from "./EditBtn";
+import FurnitureItem from "./FurnitureItem";
+import CreateFurnitureForm from "./CreateFurnitureForm";
+import "./FurnitureList.css";
 
-const FurnitureList = () => {
+const FurnitureList = (props) => {
   const [furniture, setFurniture] = useState([]);
+  const [refresh, setRefresh] = useState(true);
   useEffect(() => {
-    axios
-      .get(`https://furnituremern.alpayc.repl.co/api/furniture?size=klein`)
-      .then((res) => {
-        setFurniture(res.data);
-      });
-  }, []);
+    const fetchData = async () => {
+      const data = axios
+        .get(`/api/furniture?size=${props.furnituresize}`)
+        .then((res) => {
+          setFurniture(res.data);
+        });
+    };
+    fetchData();
+  }, [refresh]);
+
   return (
     <>
       <h1>Liste aller Möbel</h1>
-      {furniture?.map((furniture) => (
-        <div key={furniture._id} className="furniture-item">
-          <div className="item-img-container">
-            <img src={furniture.image.url} alt={furniture.name} />
-          </div>
-          <div className="descr-container">
-            <h2>{furniture.title}</h2>
-            <h3>{furniture.room}</h3>
-            <h3>Beschreibung</h3>
-            <p>{furniture.description}</p>
-            <EditBtn furnitureId={furniture._id} />
-          </div>
-        </div>
-      ))}
+      <main className="category-container">
+        <FurnitureItem data={furniture} />
+        <CreateFurnitureForm setRefresh={setRefresh} />
+      </main>
     </>
   );
 };
