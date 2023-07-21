@@ -37,11 +37,13 @@ const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
 
   const textUpdating = async () => {
     try {
-      await axios.put(`/api/updateFurniture/${id}`, {
+      const response = await axios.put(`/api/updateFurniture/${id}`, {
         [itemKeyName]: newTxt,
       });
+
+      console.log("Update response:", response.data);
     } catch (error) {
-      console.log(error);
+      console.log("Error updating furniture:", error);
     }
   };
 
