@@ -11,7 +11,14 @@ h1 {
   color: rgb(0, 0, 0);
 }
 
+
+span{
+  font-size: 6vw;
+}
+
+
 a {
+
   text-decoration: none;
   font-size: 2vw;
   color: rgb(93, 91, 91);
@@ -48,6 +55,22 @@ nav {
   align-items: center;
   height: 25vh;
 }
+
+
+.BackBtn{
+  background-color: rgba(255, 255, 255, 0.02);
+  border: none;
+  cursor: pointer;
+}
+
+.BackBtn img{
+  width: 10%;
+}
+
+.BackBtn img:hover{
+  transform: scale(1.04);
+}
+
 .furniture-item {
   display: flex;
   flex-direction: row;
