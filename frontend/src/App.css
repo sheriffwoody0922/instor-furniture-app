@@ -1,46 +1,60 @@
-main{
+main {
   min-height: 100vh;
 }
 
-h1{
+img {
+  max-width: 100%;
+}
+h1 {
   font-size: 5vw;
   letter-spacing: 1rem;
   color: rgb(0, 0, 0);
 }
 
-a{
+a {
   text-decoration: none;
   font-size: 2vw;
   color: rgb(93, 91, 91);
 }
 
-a:hover{
+a:hover {
   color: black;
   font-weight: bold;
 }
 
-header{
+header {
   display: flex;
   justify-content: right;
   align-items: center;
   padding: 2rem 5rem;
 }
 
-nav{
+nav {
   display: flex;
   gap: 5rem;
 }
 
-.furniture-home{
-  background: url("https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80") no-repeat center;
+.furniture-home {
+  background: url("https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80")
+    no-repeat center;
   background-size: cover;
   height: 45vh;
-  opacity: 60%; 
+  opacity: 60%;
 }
 
-.furniture-header{
+.furniture-header {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 25vh;
+}
+.furniture-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid grey;
+}
+.item-img-container {
+  width: 60%;
 }
