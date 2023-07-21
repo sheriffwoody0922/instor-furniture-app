@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 import { v2 as cloudinary } from "cloudinary";
 import "./config/config.js";
 import "./models/index.js";
-import { Post } from "./models/PostModel.js";
+import { Furniture } from "./models/PostModel.js";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUDNAME,
@@ -23,46 +23,32 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-//# Fetche alle Posts
-app.get("/api/posts", async (req, res) => {
+// # Fetche alle Möbelstücke oder Möbelstücke einer bestimmten Größe
+app.get("/api/furniture", async (req, res) => {
   try {
-    const posts = await Post.find();
-    res.send(posts);
-    console.log(posts);
+    const furniture = await Furniture.find(req.query);
+    res.send(furniture);
+    console.log(furniture);
   } catch (err) {
     console.log(err);
     res.sendStatus(500);
   }
 });
 
-// # Fetche einen Post mit der ID
-app.get("/api/post/:id", async (req, res) => {
+// # Fetche ein Möbelstück mit der ID
+app.get("/api/furniture/:id", async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
-    res.send(post);
-    console.log(post);
+    const furniture = await Furniture.findById(req.params.id);
+    res.send(furniture);
+    console.log(furniture);
   } catch (err) {
     console.log(err);
     res.sendStatus(500);
   }
 });
 
-// # Update einen Post mit der ID
-app.put("/api/updatePost/:id", async (req, res) => {
-  try {
-    const response = await Post.findByIdAndUpdate(req.params.id, req.body).then(
-      (response) => {
-        res.json(response);
-        console.log(response);
-      }
-    );
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("there was an error");
-  }
-});
-// # Poste einen neuen Post
-app.post("/api/addPost", upload.single("image"), async (req, res) => {
+// # Poste ein neues Möbelstück
+app.post("/api/addFurniture", upload.single("image"), async (req, res) => {
   console.log(req.file);
   try {
     // Überprüfen, ob das Bild erfolgreich hochgeladen wurde
@@ -82,14 +68,14 @@ app.post("/api/addPost", upload.single("image"), async (req, res) => {
 
           console.log("Cloudinary upload result:", result);
           try {
-            const response = await Post.create({
+            const response = await Furniture.create({
               ...req.body,
               image: { url: result.secure_url, imageId: result.public_id },
             });
             res.json(response);
           } catch (err) {
-            console.log("Error creating post:", err);
-            res.status(500).send("Error creating post.");
+            console.log("Error creating furniture:", err);
+            res.status(500).send("Error creating furniture.");
           }
         }
       )
@@ -99,10 +85,26 @@ app.post("/api/addPost", upload.single("image"), async (req, res) => {
     res.status(500).send("There was an error.");
   }
 });
-// # Lösche einen Post mit der ID
-app.delete("/api/deletePost/:id", async (req, res) => {
+
+// # Update einen Post mit der ID
+app.put("/api/updateFurniture/:id", async (req, res) => {
   try {
-    const response = await Post.findByIdAndDelete(req.params.id);
+    const response = await Furniture.findByIdAndUpdate(
+      req.params.id,
+      req.body
+    ).then((response) => {
+      res.json(response);
+      console.log(response);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("there was an error");
+  }
+});
+// # Lösche ein Möbelstück mit der ID
+app.delete("/api/deleteFurniture/:id", async (req, res) => {
+  try {
+    const response = await Furniture.findByIdAndDelete(req.params.id);
     cloudinary.uploader.destroy(response.image?.imageId, (err) => {
       console.log(err);
     });
@@ -113,7 +115,6 @@ app.delete("/api/deletePost/:id", async (req, res) => {
     res.status(500).send("there was an error");
   }
 });
-
 app.listen(PORT || 3000, () => {
   console.log("Server läuft auf: ", PORT);
 });
