@@ -6,7 +6,7 @@ const FurnitureList = () => {
   const [furniture, setFurniture] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://furnituremern.alpayc.repl.co/api/furniture?size=klein`)
+      .get("/api/furniture?size=klein")
       .then((res) => {
         setFurniture(res.data);
       });

@@ -1,0 +1,20 @@
+header {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 2rem 5rem;
+  }
+
+header a{
+    font-size: 2vw;
+    color: rgb(93, 91, 91);
+}
+
+header a:hover {
+    color: black;
+  }
+
+  nav {
+    display: flex;
+    gap: 5rem;
+  }

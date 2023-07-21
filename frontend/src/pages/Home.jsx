@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import Header from "../components/Header";
-
-
+import bigStuff from "../assets/bigstuff.avif"
+import middleStuff from "../assets/middlestuff.avif"
+import smallStuff from "../assets/smallstuff.avif"
+import "./Home.css"
 
 
 
@@ -15,9 +17,24 @@ const Home = () => {
                 </article>
             </section>
             <section className="furniture-link">
-            <NavLink to="/big-stuff" >BIG STUFF</NavLink>
-                <NavLink to="/middle-stuff" >NOT SO BIG STUFF</NavLink>
-                <NavLink to="/small-stuff" >SMALL STUFF</NavLink>
+                <NavLink className="home-link" to="/big-stuff" >
+                    <article className="home-stuff">
+                        <img src={bigStuff} alt="big-stuff" />
+                        <h6>BIG STUFF</h6>
+                    </article>
+                </NavLink>
+                <NavLink className="home-link" to="/middle-stuff" >
+                    <article className="home-stuff">
+                        <img src={middleStuff} alt="middle-stuff" />
+                        <h6>NOT SO BIG STUFF</h6>
+                    </article>
+                </NavLink>
+                <NavLink className="home-link" to="/small-stuff" >
+                    <article className="home-stuff">
+                        <img src={smallStuff} alt="small-stuff" />
+                        <h6>SMALL STUFF</h6>
+                    </article>
+                </NavLink>
             </section>
         </main>
      );
