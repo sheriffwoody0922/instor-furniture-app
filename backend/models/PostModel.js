@@ -19,10 +19,11 @@ const postsSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 20,
   },
-  //   author: {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     immutable: true,
-  //   },
+  size: {
+    type: String,
+    enum: ["klein", "mittel", "gross"],
+    required: true,
+  },
   image: {
     type: {
       url: String,
@@ -32,4 +33,4 @@ const postsSchema = new mongoose.Schema({
   },
 });
 
-export const Post = mongoose.model("Post", postsSchema);
+export const Furniture = mongoose.model("Furniture", postsSchema);
