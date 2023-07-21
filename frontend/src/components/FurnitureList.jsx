@@ -7,7 +7,7 @@ import "./FurnitureList.css";
 const FurnitureList = (props) => {
   const [furniture, setFurniture] = useState([]);
   const [refresh, setRefresh] = useState(true);
-  useEffect(() => {
+
     const fetchData = async () => {
       const data = axios
         .get(`/api/furniture?size=${props.furnituresize}`)
@@ -17,6 +17,7 @@ const FurnitureList = (props) => {
     };
     fetchData();
   }, [refresh]);
+
 
   return (
     <>
