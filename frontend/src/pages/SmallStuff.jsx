@@ -5,7 +5,7 @@ const SmallStuff = () => {
   return (
     <>
       <Header />
-      <FurnitureList />
+      <FurnitureList furnituresize={"klein"} />
     </>
   );
 };

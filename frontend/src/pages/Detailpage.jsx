@@ -8,9 +8,7 @@ const Detailpage = () => {
   const [furniture, setFurniture] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(
-        `https://furnituremern.alpayc.repl.co/api/furniture/${idFurniture}`
-      );
+      const { data } = await axios.get(`/api/furniture/${idFurniture}`);
       setFurniture(data);
     };
     fetchData();
@@ -23,6 +21,7 @@ const Detailpage = () => {
       <h1>{furniture.title}</h1>
       <p>{furniture.room}</p>
       <p>{furniture.description}</p>
+      <p>{furniture.size}</p>
     </>
   );
 };
