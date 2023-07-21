@@ -1,42 +1,46 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+main{
+  min-height: 100vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1{
+  font-size: 5vw;
+  letter-spacing: 1rem;
+  color: rgb(0, 0, 0);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a{
+  text-decoration: none;
+  font-size: 2vw;
+  color: rgb(93, 91, 91);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+a:hover{
+  color: black;
+  font-weight: bold;
 }
 
-.card {
-  padding: 2em;
+header{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding: 2rem 5rem;
 }
 
-.read-the-docs {
-  color: #888;
+nav{
+  display: flex;
+  gap: 5rem;
+}
+
+.furniture-home{
+  background: url("https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80") no-repeat center;
+  background-size: cover;
+  height: 45vh;
+  opacity: 60%; 
+}
+
+.furniture-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25vh;
 }
