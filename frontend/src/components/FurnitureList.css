@@ -5,3 +5,16 @@
   align-items: flex-start;
   gap: 5rem;
 }
+
+.furniture-gallery{
+  padding: 2rem 5rem;
+}
+
+.furniture-gallery h1{
+  margin: 0 0 1rem 0;
+}
+
+.gallery-header{
+  display: flex;
+  justify-content: flex-start;
+}

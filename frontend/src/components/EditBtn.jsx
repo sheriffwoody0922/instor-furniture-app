@@ -4,7 +4,7 @@ const EditBtn = (props) => {
   return (
     <>
       <NavLink to={`/furniture/${props.furnitureId}`}>
-        <button>Edit</button>
+        <button className="edit-btn">Edit</button>
       </NavLink>
     </>
   );

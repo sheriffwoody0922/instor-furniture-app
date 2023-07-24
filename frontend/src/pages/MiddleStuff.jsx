@@ -4,7 +4,9 @@ import FurnitureList from "../components/FurnitureList";
 const MiddleStuff = () => {
   return (
     <>
-      <Header />
+      <section className="header-grau">
+        <Header />
+      </section>
       <FurnitureList furnituresize={"mittel"} />
     </>
   );
