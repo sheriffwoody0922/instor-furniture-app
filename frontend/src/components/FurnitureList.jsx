@@ -22,7 +22,7 @@ const FurnitureList = (props) => {
   return (
     <div className="furniture-gallery">
       <div>
-      <h1>Liste aller Möbel</h1>
+        <h1>Liste aller Möbel</h1>
       </div>
       <main className="category-container">
         <FurnitureItem data={furniture} />
