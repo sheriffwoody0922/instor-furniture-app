@@ -6,64 +6,73 @@
   gap: 2rem;
 }
 
-.furniture-item{
+.furniture-item {
   border-radius: 5px;
   border: 1px solid rgb(218, 216, 216);
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
 }
 
-.item-img-container img{
+.item-img-container img {
   border-radius: 2px;
-  width: 20rem;
-  height: 19.5rem;
   object-fit: contain;
+  height: 60vh;
+  width: 50vw;
 }
 
-.descr-container{
+.descr-container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  padding: 10rem 0rem;
 }
 
-.descr-container h2{
-  font-size: 2vw;
+.descr-container h2 {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical; 
+  -webkit-box-orient: vertical;
+  font-size: 4rem;
+  margin-bottom: 2rem;
 }
 
-.descr-container h3{
+.descr-container h3 {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical; 
+  -webkit-box-orient: vertical;
+  margin-bottom: 2rem;
+  font-size: 2.4rem;
 }
 
-.descr-container p{
+.descr-container p {
   width: 15rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical; 
+  -webkit-box-orient: vertical;
+  margin-bottom: 2rem;
+  font-size: 2rem;
 }
 
-.edit-btn{
+.edit-btn {
   padding: 0.2rem 1rem;
   border-radius: 5px;
   border: 1px solid rgb(245, 247, 249);
-  text-shadow:0px 1px 0px #ffee66;
+  text-shadow: 0px 1px 0px #ffee66;
   cursor: pointer;
 }
 
-.edit-btn:hover{
-  background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
-	background-color:#ffab23;
+.edit-btn:hover {
+  background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+  background-color: #ffab23;
 }
 
-.header-container{
+.header-container {
   display: flex;
   justify-content: space-between;
   gap: 10rem;
+}
+.item-img-container {
+  max-width: 60%;
 }
