@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import "./CreateFurnitureForm.css";
 
 const CreateFurnitureForm = ({ setRefresh }) => {
   const [creatingNewItem, setCreatingNewItem] = useState(false);
@@ -20,27 +21,39 @@ const CreateFurnitureForm = ({ setRefresh }) => {
     return (
       <>
         <form onSubmit={handleSubmit} className="new-furniture-form-container">
-          <input type="text" placeholder="Title" name="title" required />
-          <input type="text" placeholder="Room" name="room" required />
-          <input type="text" placeholder="Size" name="size" required />
-          <input type="file" placeholder="Image" name="image" required />
+          <h2 className="add-title">ADD NEW ITEM</h2>
+          <input type="text" placeholder="TITLE" name="title" required />
+          <input type="text" placeholder="ROOM" name="room" required />
+          <input type="text" placeholder="SIZE" name="size" required />
+          <input type="file" placeholder="IMAGE" name="image" required />
           <textarea
-            rows="4"
-            cols="50"
-            placeholder="Content"
+            className="add-text-input-field"
+            placeholder="ADD TEXT"
             name="description"
             required
           />
-          <button type="submit">Submit</button>
+          <button className="submit-btn" type="submit">
+            PUBLISH
+          </button>
+          <button
+            className="abort-btn"
+            onClick={() => setCreatingNewItem(false)}
+          >
+            X
+          </button>
         </form>
-        <button onClick={() => setCreatingNewItem(false)}>Cancel</button>
       </>
     );
   } else {
     // Im Anzeigemodus, der standardgemäß geladen wird, wenn die JSX Komponente geladen wurde
     return (
       <>
-        <button onClick={() => setCreatingNewItem(true)}>Add new Item</button>
+        <button
+          className="add-new-item-btn"
+          onClick={() => setCreatingNewItem(true)}
+        >
+          Add Something
+        </button>
       </>
     );
   }

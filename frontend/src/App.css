@@ -6,11 +6,22 @@ img {
   max-width: 100%;
 }
 
-a{
+a {
   text-decoration: none;
   color: black;
 }
 
 .item-img-container {
   width: 60%;
+}
+
+button {
+  border: 1px solid black;
+  padding: 1rem 2rem;
+  font-family: "Times New Roman", Times, serif;
+  background-color: white;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: rgb(54, 54, 54);
+  cursor: pointer;
 }
