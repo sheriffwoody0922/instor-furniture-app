@@ -1,14 +1,22 @@
+.btn-container{
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
 
 .BackBtn{
     background-color: rgba(255, 255, 255, 0.02);
     border: none;
     cursor: pointer;
+    width: 3rem;
   }
   
   .BackBtn img{
-    width: 10%;
+    width: 100%;
   }
   
   .BackBtn img:hover{
     transform: scale(1.04);
   }
+  

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BackButton from "./BackButton";
 import EditBtn from "./EditBtn";
 import "./FurnitureItem.css";
 
@@ -17,15 +18,19 @@ const FurnitureItem = (props) => {
               <img src={furniture.image.url} alt={furniture.name} />
             </div>
             <div className="descr-container">
+              <div className="header-container">
               <h2>{furniture.title}</h2>
+
+              </div>
               <h3>{furniture.room}</h3>
               <h3>Beschreibung</h3>
               <p>{furniture.description}</p>
               <p>Größe: {furniture.size}</p>
-              <EditBtn furnitureId={furniture._id} />
             </div>
+              <EditBtn furnitureId={furniture._id} />
           </div>
         ))}
+      <BackButton/>
       </section>
     </>
   );
