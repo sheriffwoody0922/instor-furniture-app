@@ -1,16 +1,26 @@
+// Importiere die 'useState'-Hook aus 'react', um den Zustand in der Komponente zu verwalten
 import { useState } from "react";
+
+// Importiere das 'axios'-Modul für HTTP-Anfragen
 import axios from "axios";
+
+// Importiere die CSS-Datei für das Styling der Komponente
 import "./UpdateBtn.css";
 
+// Definiere die React-Komponente 'UpdateBtn'
 const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
+  // Verwende die 'useState'-Hook, um den Zustand 'isEditing' mit dem anfänglichen Wert 'false',
+  // den Zustand 'newTxt' mit dem anfänglichen Wert '' und den Zustand 'selectedImage' mit dem anfänglichen Wert 'null' zu initialisieren
   const [isEditing, setIsEditing] = useState(false);
   const [newTxt, setNewTxt] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
 
+  // Funktion, um das ausgewählte Bild zu setzen, wenn ein Dateieingabefeld ausgewählt wird
   const handleFileInputChange = (e) => {
     setSelectedImage(e.target.files[0]);
   };
 
+  // Funktion, um das Update zu starten, je nachdem, ob es sich um eine Bild- oder Textaktualisierung handelt
   const startUpdating = async () => {
     try {
       if (itemKeyName === "img" && selectedImage) {
@@ -28,6 +38,7 @@ const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
     }
   };
 
+  // Funktion, um das Bild zu aktualisieren
   const imgUpdating = async (formData) => {
     try {
       await axios.put(`/api/updateFurniture/${id}`, formData);
@@ -36,6 +47,7 @@ const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
     }
   };
 
+  // Funktion, um den Text zu aktualisieren
   const textUpdating = async () => {
     try {
       const response = await axios.put(`/api/updateFurniture/${id}`, {
@@ -48,12 +60,14 @@ const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
     }
   };
 
+  // Wenn sich der Bearbeitungsmodus ('isEditing') aktiviert hat
   if (isEditing) {
     if (
       itemKeyName === "title" ||
       itemKeyName === "room" ||
       itemKeyName === "size"
     ) {
+      // Input-Feld für die Bearbeitung des Titels, des Raums oder der Größe
       return (
         <div className="update-btn-container">
           <input
@@ -68,6 +82,7 @@ const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
         </div>
       );
     } else if (itemKeyName === "description") {
+      // Textarea-Feld für die Bearbeitung der Beschreibung
       return (
         <div className="update-btn-container">
           <textarea
@@ -81,6 +96,7 @@ const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
         </div>
       );
     } else if (itemKeyName === "img") {
+      // Input-Feld für die Bearbeitung des Bildes
       return (
         <div className="update-btn-container">
           <div className="update-furniture-form-container">
@@ -102,6 +118,7 @@ const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
       );
     }
   } else {
+    // Ansonsten, wenn sich der Bearbeitungsmodus nicht aktiviert hat, zeige den 'Edit'-Button an
     return (
       <>
         <button onClick={() => setIsEditing(true)}>Edit</button>
@@ -110,4 +127,5 @@ const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
   }
 };
 
+// Exportiere die 'UpdateBtn'-Komponente, damit sie in anderen Dateien verwendet werden kann
 export default UpdateBtn;
