@@ -38,6 +38,7 @@ const CreateFurnitureForm = ({ setRefresh }) => {
           <button
             className="abort-btn"
             onClick={() => setCreatingNewItem(false)}
+            type="button"
           >
             X
           </button>
