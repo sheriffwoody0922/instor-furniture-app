@@ -1,3 +1,69 @@
 .furniture-item-container {
   max-width: 60%;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.furniture-item{
+  border-radius: 5px;
+  border: 1px solid rgb(218, 216, 216);
+  display: flex;
+  gap: 1rem;
+}
+
+.item-img-container img{
+  border-radius: 2px;
+  width: 20rem;
+  height: 19.5rem;
+  object-fit: contain;
+}
+
+.descr-container{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.descr-container h2{
+  font-size: 2vw;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical; 
+}
+
+.descr-container h3{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical; 
+}
+
+.descr-container p{
+  width: 15rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; 
+}
+
+.edit-btn{
+  padding: 0.2rem 1rem;
+  border-radius: 5px;
+  border: 1px solid rgb(245, 247, 249);
+  text-shadow:0px 1px 0px #ffee66;
+  cursor: pointer;
+}
+
+.edit-btn:hover{
+  background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+	background-color:#ffab23;
+}
+
+.header-container{
+  display: flex;
+  justify-content: space-between;
+  gap: 10rem;
 }

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import FurnitureItem from "./FurnitureItem";
 import CreateFurnitureForm from "./CreateFurnitureForm";
 import "./FurnitureList.css";
+import BackButton from "./BackButton";
 
 const FurnitureList = (props) => {
   const [furniture, setFurniture] = useState([]);
@@ -19,13 +20,15 @@ const FurnitureList = (props) => {
   }, [refresh]);
 
   return (
-    <>
+    <div className="furniture-gallery">
+      <div>
       <h1>Liste aller Möbel</h1>
+      </div>
       <main className="category-container">
         <FurnitureItem data={furniture} />
         <CreateFurnitureForm setRefresh={setRefresh} />
       </main>
-    </>
+    </div>
   );
 };
 

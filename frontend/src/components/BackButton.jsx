@@ -10,7 +10,7 @@ const BackButton = () => {
     }
 
     return ( 
-        <div>
+        <div className="btn-container">
             <button onClick={goBack} className="BackBtn"><img src={btnImg} alt="Back" /></button>
         </div>
      );

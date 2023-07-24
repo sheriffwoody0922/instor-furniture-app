@@ -4,7 +4,9 @@ import Header from "../components/Header";
 const SmallStuff = () => {
   return (
     <>
-      <Header />
+      <section className="header-grau">
+        <Header />
+      </section>
       <FurnitureList furnituresize={"klein"} />
     </>
   );

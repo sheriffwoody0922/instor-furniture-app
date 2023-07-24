@@ -18,3 +18,7 @@ header a:hover {
     display: flex;
     gap: 5rem;
   }
+
+  .header-grau{
+    background-color: rgb(226, 225, 225);
+  }
