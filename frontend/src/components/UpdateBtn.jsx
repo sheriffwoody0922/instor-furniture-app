@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "./UpdateBtn.css";
 
 const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -54,20 +55,21 @@ const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
       itemKeyName === "size"
     ) {
       return (
-        <>
+        <div className="update-btn-container">
           <input
             type="text"
             name={itemKeyName}
             value={newTxt}
             onChange={(e) => setNewTxt(e.target.value)}
+            placeholder={`Bitte geben den neuen ${itemKeyName}`}
           />
           <button onClick={startUpdating}>Änderungen speichern</button>
           <button onClick={() => setIsEditing(false)}>Abbrechen</button>
-        </>
+        </div>
       );
     } else if (itemKeyName === "description") {
       return (
-        <>
+        <div className="update-btn-container">
           <textarea
             name={itemKeyName}
             value={newTxt}
@@ -76,11 +78,11 @@ const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
           />
           <button onClick={startUpdating}>Änderungen speichern</button>
           <button onClick={() => setIsEditing(false)}>Abbrechen</button>
-        </>
+        </div>
       );
     } else if (itemKeyName === "img") {
       return (
-        <>
+        <div className="update-btn-container">
           <div className="update-furniture-form-container">
             <form className="create-post-form-container">
               <input
@@ -96,7 +98,7 @@ const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
             </form>
             <button onClick={() => setIsEditing(false)}>Abbrechen</button>
           </div>
-        </>
+        </div>
       );
     }
   } else {
