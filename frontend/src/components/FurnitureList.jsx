@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import FurnitureItem from "./FurnitureItem";
 import CreateFurnitureForm from "./CreateFurnitureForm";
 import BackButton from "./BackButton";
-
+import Search from "../components/Search";
 // Importiere die CSS-Datei für das Styling der Komponente
 import "./FurnitureList.css";
 
@@ -36,6 +36,7 @@ const FurnitureList = (props) => {
 
   return (
     <div className="furniture-gallery">
+      <Search setFurniture={setFurniture} />
       <div>
         {/* Überschrift der Möbelliste */}
         <h1>Liste aller Möbel</h1>
@@ -47,7 +48,6 @@ const FurnitureList = (props) => {
         <CreateFurnitureForm setRefresh={setRefresh} />
       </main>
       {/* Komponente 'BackButton', um zur vorherigen Seite zurückzukehren */}
-      <BackButton />
     </div>
   );
 };

@@ -10,6 +10,7 @@ import Bigstuff from "./pages/BigStuff";
 import Middlestuff from "./pages/MiddleStuff";
 import Smallstuff from "./pages/SmallStuff";
 import Detailpage from "./pages/Detailpage";
+import AllFurniture from "./pages/AllFurniture";
 
 // Definiere die App-Komponente
 function App() {
@@ -23,12 +24,14 @@ function App() {
           {/* Wenn der Pfad '/home' übereinstimmt, zeige die 'Home'-Komponente an */}
           <Route path="/big-stuff" element={<Bigstuff />} />{" "}
           {/* Wenn der Pfad '/big-stuff' übereinstimmt, zeige die 'Bigstuff'-Komponente an */}
+          <Route path="/allfurnitures" element={<AllFurniture />} />{" "}
+          {/* Wenn der Pfad '/big-stuff' übereinstimmt, zeige die 'Bigstuff'-Komponente an */}
           <Route path="/middle-stuff" element={<Middlestuff />} />{" "}
           {/* Wenn der Pfad '/middle-stuff' übereinstimmt, zeige die 'Middlestuff'-Komponente an */}
           <Route path="/small-stuff" element={<Smallstuff />} />{" "}
           {/* Wenn der Pfad '/small-stuff' übereinstimmt, zeige die 'Smallstuff'-Komponente an */}
           <Route path="/furniture/:id" element={<Detailpage />} />{" "}
-          {/* Wenn der Pfad '/furniture/:id' übereinstimmt, zeige die 'Detailpage'-Komponente an */}
+          {/* Wenn der Pfad '/furniture/:id' übereinstimmt , zeige die 'Detailpage'-Komponente an */}
         </Routes>
       </BrowserRouter>
     </>

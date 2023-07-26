@@ -3,9 +3,10 @@ import FurnitureList from "../components/FurnitureList";
 
 // Importiere die 'Header'-Komponente aus dem '../components/Header'-Modul
 import Header from "../components/Header";
-
+import { useState } from "react";
 // Definiere die React-Komponente 'SmallStuff'
 const SmallStuff = () => {
+  const [categoryName, setCategoryName] = useState("klein");
   return (
     <>
       {/* Container für den grauen Header */}
@@ -15,7 +16,7 @@ const SmallStuff = () => {
       </section>
 
       {/* 'FurnitureList'-Komponente anzeigen und die Requisit 'furnituresize' mit dem Wert "klein" übergeben */}
-      <FurnitureList furnituresize={"klein"} />
+      <FurnitureList furnituresize={categoryName} />
     </>
   );
 };

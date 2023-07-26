@@ -3,11 +3,9 @@ import Header from "../components/Header";
 
 // Importiere die 'FurnitureList'-Komponente aus dem '../components/FurnitureList'-Modul
 import FurnitureList from "../components/FurnitureList";
-import { useState } from "react";
 
 // Definiere die React-Komponente 'BigStuff'
-const BigStuff = () => {
-  const [categoryName, setCategoryName] = useState("gross");
+const AllFurniture = () => {
   return (
     <>
       {/* Header-Bereich mit grauem Hintergrund */}
@@ -16,10 +14,10 @@ const BigStuff = () => {
         <Header />
       </section>
       {/* Zeige die 'FurnitureList'-Komponente mit der 'furnituresize' prop 'gross' an */}
-      <FurnitureList furnituresize={categoryName} />
+      <FurnitureList furnituresize={""} />
     </>
   );
 };
 
 // Exportiere die 'BigStuff'-Komponente, damit sie in anderen Dateien verwendet werden kann
-export default BigStuff;
+export default AllFurniture;
