@@ -1,25 +1,19 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 
-const Search = ({ setFurniture }) => {
+const Search = ({ setCategoryName, setQueryKey }) => {
   const [input, setInput] = useState();
-  const [inputName, setInputName] = useState("size");
+  const [inputName, setInputName] = useState();
 
   const handeInput = (e) => {
     setInput(e.target.value);
     setInputName(e.target.name);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      // Sende eine GET-Anfrage mit 'axios' an den Endpunkt '/api/furniture'
-      // und füge die Abfrage-Parameter 'size' hinzu, die aus 'props.furnituresize' stammen
-      const data = await axios.get(`/api/furniture?${inputName}=${input}`);
+  //   console.log(setCategoryName);
 
-      // Aktualisiere den Zustand 'furniture' mit den Daten aus der Antwort
-      setFurniture(data.data);
-    };
-    fetchData();
+  useEffect(() => {
+    setCategoryName(input);
+    setQueryKey(inputName);
   }, [input]);
 
   return (

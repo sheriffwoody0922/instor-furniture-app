@@ -18,25 +18,28 @@ const FurnitureList = (props) => {
   // und den Zustand 'refresh' mit dem anfänglichen Wert 'true'
   const [furniture, setFurniture] = useState([]);
   const [refresh, setRefresh] = useState(true);
-
+  const [categoryName, setCategoryName] = useState(props.furnituresize);
+  const [queryKey, setQueryKey] = useState("size");
   // Verwende die 'useEffect'-Hook, um Daten von der API zu laden, wenn sich 'refresh' ändert
   useEffect(() => {
-    const fetchData = async () => {
-      // Sende eine GET-Anfrage mit 'axios' an den Endpunkt '/api/furniture'
-      // und füge die Abfrage-Parameter 'size' hinzu, die aus 'props.furnituresize' stammen
-      const data = await axios.get(
-        `/api/furniture?size=${props.furnituresize}`
-      );
+    if (typeof categoryName !== "undefined") {
+      const fetchData = async () => {
+        // Sende eine GET-Anfrage mit 'axios' an den Endpunkt '/api/furniture'
+        // und füge die Abfrage-Parameter 'size' hinzu, die aus 'props.furnituresize' stammen
+        const data = await axios.get(
+          `/api/furniture?${queryKey}=${categoryName}`
+        );
 
-      // Aktualisiere den Zustand 'furniture' mit den Daten aus der Antwort
-      setFurniture(data.data);
-    };
-    fetchData();
-  }, [refresh]);
+        // Aktualisiere den Zustand 'furniture' mit den Daten aus der Antwort
+        setFurniture(data.data);
+      };
+      fetchData();
+    }
+  }, [refresh, categoryName]);
 
   return (
     <div className="furniture-gallery">
-      <Search setFurniture={setFurniture} />
+      <Search setCategoryName={setCategoryName} setQueryKey={setQueryKey} />
       <div>
         {/* Überschrift der Möbelliste */}
         <h1>Liste aller Möbel</h1>
