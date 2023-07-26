@@ -7,6 +7,7 @@ import { app, upload } from "./middlewares/middleware.js";
 // Importiere die Controller-Funktionen für die Möbel-Endpoints
 import {
   getAllFurniture,
+  getAllFurnitureTwo,
   getFurnitureById,
   addFurniture,
   updateFurniture,
@@ -41,7 +42,7 @@ const FE_INDEX = join(__dirname, "../frontend/dist/index.html");
 
 // Routen
 // Definiere die Routen für die Möbel-Endpoints und verknüpfe sie mit den entsprechenden Controller-Funktionen
-app.get("/api/furniture", getAllFurniture);
+app.get("/api/furniture", getAllFurnitureTwo);
 app.get("/api/furniture/:id", getFurnitureById);
 app.post("/api/addFurniture", upload.single("image"), addFurniture);
 app.put("/api/updateFurniture/:id", upload.single("image"), updateFurniture);

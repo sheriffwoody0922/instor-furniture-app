@@ -12,6 +12,8 @@ export const getAllFurniture = async (req, res) => {
   try {
     // Rufe alle Möbelstücke aus der Datenbank basierend auf den Anfragenparametern (req.query) ab. Wenn keine query übermittelt werden, dann werden alle Möbelstücke aus der Datenbank geladen. zb die Url "./api/furniture?size=gross"
     const furniture = await Furniture.find(req.query);
+    console.log("hi", furniture);
+
     // Sende die Möbelstücke als Antwort zurück
     res.send(furniture);
     // Gebe die Möbelstücke auch in der Konsole aus
@@ -20,6 +22,87 @@ export const getAllFurniture = async (req, res) => {
     // Bei einem Fehler logge den Fehler in der Konsole und sende den Statuscode 500 zurück
     console.log(err);
     res.sendStatus(500);
+  }
+};
+
+// export const getAllFurnitureTwo = async (req, res) => {
+//   const { title, description, room, size, sortBy } = req.query;
+
+//   try {
+//     let responseData = await Furniture.find();
+
+//     if (title) {
+//       responseData = responseData.filter((data) => {
+//         return data.title.toLowerCase().includes(title.toLowerCase());
+//       });
+//     }
+//     if (room) {
+//       responseData = responseData.filter((data) => {
+//         return data.room.toLowerCase().includes(room.toLowerCase());
+//       });
+//     }
+//     if (size) {
+//       responseData = responseData.filter((data) => {
+//         return data.size.toLowerCase().includes(size.toLowerCase());
+//       });
+//     }
+//     if (description) {
+//       responseData = responseData.filter((data) => {
+//         return data.description
+//           .toLowerCase()
+//           .includes(description.toLowerCase());
+//       });
+//     }
+//     if (sortBy) {
+//       // Validiere den Sortierparameter
+//       if (!["title", "room", "anotherProperty"].includes(sortBy)) {
+//         return res.status(400).json({ error: "Invalid 'sortBy' parameter." });
+//       }
+
+//       responseData.sort((dataA, dataB) => {
+//         return dataA[sortBy].localeCompare(dataB[sortBy]);
+//       });
+//     }
+
+//     res.json(responseData);
+//   } catch (err) {
+//     console.error(err);
+//     res
+//       .status(500)
+//       .json({ error: "There was an error fetching the Big Stuff" });
+//   }
+// };
+export const getAllFurnitureTwo = async (req, res) => {
+  try {
+    // Daten von außen über den Request erhalten
+    const filters = req.query;
+    const sortBy = filters.sortBy; // Assuming the sortBy parameter is provided in the query string
+
+    // Erstellen eines Filterobjekts für die Datenbankabfrage
+    // Angenommen, die "key" in den Filtern entspricht dem Datenbankfeld
+    const filterObject = {};
+    for (const key in filters) {
+      if (key !== "sortBy") {
+        filterObject[key] = { $regex: new RegExp(filters[key], "i") };
+      }
+    }
+
+    let query = Furniture.find(filterObject);
+
+    // Sortierung basierend auf dem sortBy-Schlüssel
+    if (sortBy) {
+      // Wenn sortBy mit "asc" angegeben ist, wird aufsteigend sortiert
+      // Ansonsten wird standardmäßig absteigend sortiert
+      const sortOrder = sortBy === "asc" ? 1 : -1;
+      query = query.sort({ [sortBy]: sortOrder });
+    }
+
+    let responseData = await query.exec();
+    res.json(responseData);
+    console.log(responseData.length);
+  } catch (error) {
+    console.error("Fehler beim Verarbeiten der Anfrage:", error);
+    res.status(500).send("Interner Serverfehler");
   }
 };
 

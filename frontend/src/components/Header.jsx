@@ -18,6 +18,7 @@ const Header = () => {
         <Link to="/middle-stuff">NOT SO BIG STUFF</Link>
         {/* Link zur Seite mit kleinen Möbelstücken */}
         <Link to="/small-stuff">SMALL STUFF</Link>
+        <Link to="/allfurnitures">ALL FURNITURES</Link>
       </nav>
     </header>
   );
