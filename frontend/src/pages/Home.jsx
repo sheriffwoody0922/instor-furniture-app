@@ -12,8 +12,23 @@ import smallStuff from "../assets/smallstuff.avif";
 // Importiere die CSS-Datei für das Styling der Komponente
 import "./Home.css";
 
+import button from "../assets/button.png";
+// Importiere axios für das erste Fetchen der Daten
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 // Definiere die React-Komponente 'Home'
 const Home = () => {
+  const [allfurnitures, setAllFurnitures] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("/api/furniture");
+      console.log(data);
+      setAllFurnitures(data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <main>
       {/* Container für den Header und den Haupttitel */}
@@ -49,10 +64,31 @@ const Home = () => {
         {/* Link zur 'small-stuff'-Seite mit Kategorie 'SMALL STUFF' */}
         <NavLink className="home-link" to="/small-stuff">
           <article className="home-stuff">
-            <img src={smallStuff} alt="small-stuff" />
+            <img src={smallStuff} alt="small-stuff"></img>
             <h6>SMALL STUFF</h6>
           </article>
         </NavLink>
+      </section>
+      <h2>Popular</h2>
+      <section className="newest-furniture-container">
+        {allfurnitures?.map((furniture) => (
+          <div key={furniture._id} className="homepage-furniture-item">
+            <Link to={`/furniture/${furniture._id}`}>
+              <img
+                src={furniture.image.url}
+                className="homepage-furniture-img"
+              />
+            </Link>
+            <div className="homepage-furniture-info-container">
+              <div>
+                <h3>{furniture.room}</h3>
+                <h2>{furniture.title}</h2>
+                <h2>{furniture.size}</h2>
+              </div>
+              <img src={button} alt="" />
+            </div>
+          </div>
+        ))}
       </section>
     </main>
   );
