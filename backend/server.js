@@ -14,6 +14,16 @@ import {
   deleteFurniture,
 } from "./controllers/furnitureController.js";
 
+// Importiere die Controller-Funktionen für die User-Endpoints
+import {
+  getAllUsers,
+  getAllUserTwo,
+  getUserById,
+  addUser,
+  updateUser,
+  deleteUser,
+} from "./controllers/userController.js";
+
 // Importiere die Konfigurationsdatei und das Modell aus den entsprechenden Dateien
 import "./config/config.js";
 import "./models/index.js";
@@ -47,6 +57,13 @@ app.get("/api/furniture/:id", getFurnitureById);
 app.post("/api/addFurniture", upload.single("image"), addFurniture);
 app.put("/api/updateFurniture/:id", upload.single("image"), updateFurniture);
 app.delete("/api/deleteFurniture/:id", deleteFurniture);
+
+// Definiere die Routen für die User-Endpoints und verknüpfe sie mit den entsprechenden Controller-Funktionen
+app.get("/api/user", getAllUserTwo);
+app.get("/api/user/:id", getUserById);
+app.post("/api/addUser", upload.single("image"), addUser);
+app.put("/api/updateUser/:id", upload.single("image"), updateUser);
+app.delete("/api/deleteUser/:id", deleteUser);
 
 // Definiere einen Catch-All-Route für alle anderen Anfragen und sende die Index-Datei des Frontends
 app.get("*", (req, res) => res.sendFile(FE_INDEX));
