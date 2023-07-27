@@ -3,6 +3,7 @@ import axios from "axios";
 import "./CreateUserForm.css";
 // Importiere die CSS-Datei für das Styling der Komponente
 import "./CreateFurnitureForm.css";
+import { Link } from "react-router-dom";
 
 // Definiere die React-Komponente 'CreateFurnitureForm'
 const CreateUserForm = () => {
@@ -62,6 +63,9 @@ const CreateUserForm = () => {
         <button className="submit-btn" type="submit">
           Registrieren
         </button>
+        <Link to="/login">
+          <button className="to-login-btn">Zum Login</button>
+        </Link>
       </form>
     </>
   );

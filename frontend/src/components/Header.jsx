@@ -1,6 +1,6 @@
 // Importiere die 'Link'-Komponente aus dem 'react-router-dom'-Modul,
 // um Link-ähnliche Komponenten zu erstellen, die bei Klick auf eine andere Seite navigieren
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 // Importiere die CSS-Datei für das Styling der Komponente
 import "./Header.css";
@@ -19,7 +19,9 @@ const Header = () => {
         {/* Link zur Seite mit kleinen Möbelstücken */}
         <Link to="/small-stuff">SMALL STUFF</Link>
         <Link to="/allfurnitures">ALL FURNITURES</Link>
-        <Link to="/register">Register</Link>
+        <NavLink to="/login">
+          <button>Sign Up / Login</button>
+        </NavLink>
       </nav>
     </header>
   );

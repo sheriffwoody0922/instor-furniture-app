@@ -10,16 +10,24 @@ import "./FurnitureItem.css";
 import DeleteBtn from "./DeleteBtn";
 
 // Definiere die React-Komponente 'FurnitureItem'
-const FurnitureItem = (props) => {
+const FurnitureItem = ({
+  data,
+  refresh,
+  setRefresh,
+  queryKey,
+  categoryName,
+  setQueryKey,
+  setCategoryName,
+}) => {
   // Verwende die 'useState'-Hook, um den Zustand 'furnitureData' zu initialisieren
   // mit dem anfänglichen Wert 'props.data', das die Möbelstück-Daten enthält
-  const [furnitureData, setFurnitureData] = useState(props.data);
+  const [furnitureData, setFurnitureData] = useState(data);
 
   // Verwende die 'useEffect'-Hook, um den Zustand 'furnitureData' zu aktualisieren,
   // wenn sich die Prop 'props.data' ändert
   useEffect(() => {
-    setFurnitureData(props.data);
-  }, [props.data]);
+    setFurnitureData(data);
+  }, [data]);
 
   return (
     <>
@@ -45,9 +53,21 @@ const FurnitureItem = (props) => {
               {/* Größe des Möbelstücks */}
               <p>Größe: {furniture.size}</p>
             </div>
-            {/* Komponente 'EditBtn', die den 'Edit'-Button darstellt, um das Möbelstück zu bearbeiten */}
-            <EditBtn furnitureId={furniture._id} />
-            <DeleteBtn furnitureId={furniture._id} />
+            <div className="button-container">
+              {/* Komponente 'EditBtn', die den 'Edit'-Button darstellt, um das Möbelstück zu bearbeiten */}
+              <EditBtn furnitureId={furniture._id} />
+              {/* Komponente 'DeleteBtn', die den 'Delete'-Button darstellt, um das Möbelstück zu bearbeiten */}
+
+              <DeleteBtn
+                furnitureId={furniture._id}
+                setRefresh={setRefresh}
+                refresh={refresh}
+                queryKey={queryKey}
+                categoryName={categoryName}
+                setQueryKey={setQueryKey}
+                setCategoryName={setCategoryName}
+              />
+            </div>
           </div>
         ))}
         {/* Komponente 'BackButton', die den 'Back'-Button darstellt, um zur vorherigen Seite zurückzukehren */}
