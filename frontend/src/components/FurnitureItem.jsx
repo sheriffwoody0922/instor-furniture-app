@@ -7,6 +7,7 @@ import EditBtn from "./EditBtn";
 
 // Importiere die CSS-Datei für das Styling der Komponente
 import "./FurnitureItem.css";
+import DeleteBtn from "./DeleteBtn";
 
 // Definiere die React-Komponente 'FurnitureItem'
 const FurnitureItem = (props) => {
@@ -46,6 +47,7 @@ const FurnitureItem = (props) => {
             </div>
             {/* Komponente 'EditBtn', die den 'Edit'-Button darstellt, um das Möbelstück zu bearbeiten */}
             <EditBtn furnitureId={furniture._id} />
+            <DeleteBtn furnitureId={furniture._id} />
           </div>
         ))}
         {/* Komponente 'BackButton', die den 'Back'-Button darstellt, um zur vorherigen Seite zurückzukehren */}
