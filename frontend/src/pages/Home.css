@@ -3,7 +3,7 @@
     no-repeat center;
   background-size: cover;
   height: 45vh;
-  opacity: 60%;
+  /* opacity: 60%; */
 }
 
 .furniture-header {
@@ -31,11 +31,13 @@
   } */
 
 .furniture-link {
-  height: 55vh;
-  display: flex;
+  /* height: 55vh; */
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10rem;
+  gap: 10rem; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .home-link:hover {

@@ -27,7 +27,7 @@ const Home = () => {
           </h1>
         </article>
       </section>
-
+      <h2>Categories</h2>
       {/* Container für die Kategorie-Links */}
       <section className="furniture-link">
         {/* Link zur 'big-stuff'-Seite mit Kategorie 'BIG STUFF' */}

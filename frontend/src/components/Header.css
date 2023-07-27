@@ -1,12 +1,13 @@
 header {
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   align-items: center;
   padding: 2rem 5rem;
+  background-color: white;
 }
 
 header a {
-  font-size: 2vw;
+  font-size: 1.6vw;
   color: rgb(93, 91, 91);
 }
 
@@ -17,8 +18,9 @@ header a:hover {
 nav {
   display: flex;
   gap: 5rem;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  width: 100%;
 }
 
 .header-grau {
@@ -31,4 +33,55 @@ nav a {
 }
 nav a button:hover {
   transform: scale(1.1);
+}
+
+nav a button {
+  border-radius: 2rem;
+  background-color: black;
+  color: white;
+}
+
+.dropbtn {
+  cursor: pointer;
+  font-family: poppins-regular;
+  font-size: 1.6vw;
+  color: rgb(93, 91, 91);
+}
+.dropbtn:hover {
+  color: black;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 25rem;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.login-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }

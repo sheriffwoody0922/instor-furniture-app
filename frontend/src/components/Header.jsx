@@ -11,16 +11,23 @@ const Header = () => {
     <header>
       <nav>
         {/* Link zur Startseite */}
-        <Link to="/">HOME</Link>
-        {/* Link zur Seite mit großen Möbelstücken */}
-        <Link to="/big-stuff">BIG STUFF</Link>
-        {/* Link zur Seite mit mittelgroßen Möbelstücken */}
-        <Link to="/middle-stuff">NOT SO BIG STUFF</Link>
-        {/* Link zur Seite mit kleinen Möbelstücken */}
-        <Link to="/small-stuff">SMALL STUFF</Link>
+        <Link to="/">
+          <img src="./Logo.png" alt="" />
+        </Link>{" "}
+        <div class="dropdown">
+          <span class="dropbtn">SIZES</span>
+          <div class="dropdown-content">
+            <Link to="/big-stuff">BIG STUFF</Link>
+            <Link to="/middle-stuff">NOT SO BIG STUFF</Link>
+            <Link to="/small-stuff">SMALL STUFF</Link>
+          </div>
+        </div>
         <Link to="/allfurnitures">ALL FURNITURES</Link>
         <NavLink to="/login">
-          <button>Sign Up / Login</button>
+          <button className="login-btn">
+            <img className="login-img" src="./person.png" alt="" />
+            <p> Sign Up / Login</p>
+          </button>
         </NavLink>
       </nav>
     </header>
