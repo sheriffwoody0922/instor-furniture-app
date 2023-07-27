@@ -145,7 +145,7 @@ export const addUser = async (req, res) => {
     }
 
     // Cloudinary-Upload-Stream-Ereignis mit Fehlerbehandlung
-    uploadToCloudinary(req.file.buffer, async (err, result) => {
+    uploadToCloudinaryDirUser(req.file.buffer, async (err, result) => {
       if (err) {
         // Bei einem Cloudinary-Upload-Fehler logge den Fehler in der Konsole und sende den Statuscode 500 zurück
         console.log("Cloudinary upload error:", err);

@@ -4,14 +4,6 @@ import mongoose from "mongoose";
 // Definiere ein Mongoose-Schema namens 'userSchema' für die 'Furniture'-Dokumente in der Datenbank
 const userSchema = new mongoose.Schema(
   {
-    // Feld 'description': Eine Zeichenkette (String) ist erforderlich (required),
-    // mit einer Mindestlänge von 5 Zeichen und einer maximalen Länge von 1000 Zeichen
-    description: {
-      type: String,
-      required: true,
-      minlength: 5,
-      maxlength: 1000,
-    },
     // Feld 'userHandle': Eine Zeichenkette (String) ist erforderlich (required),
     // mit einer Mindestlänge von 2 Zeichen und einer maximalen Länge von 20 Zeichen
     userHandle: {
@@ -36,8 +28,16 @@ const userSchema = new mongoose.Schema(
       minlength: 3,
       maxlength: 1000,
     },
-    // Feld 'size': Eine Zeichenkette (String), die aus einer festen Liste von Werten (enum) ausgewählt werden muss,
-    // der Wert muss entweder "klein", "mittel" oder "gross" sein und ist erforderlich (required)
+    // Feld 'description': Eine Zeichenkette (String) ist erforderlich (required),
+    // mit einer Mindestlänge von 5 Zeichen und einer maximalen Länge von 1000 Zeichen
+    description: {
+      type: String,
+      required: false,
+      minlength: 5,
+      maxlength: 1000,
+    },
+
+    // Feld 'inventory': Eine Zeichenkette (String), die aus einer festen Liste von Werten (enum) ausgewählt werden muss,
     inventory: {
       type: String,
       required: false,
