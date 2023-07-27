@@ -18,6 +18,7 @@ import "./DetailPage.css";
 
 // Importiere die 'BackButton'-Komponente aus dem '../components/BackButton'-Modul
 import BackButton from "../components/BackButton";
+import DeleteBtn from "../components/DeleteBtn";
 
 // Definiere die React-Komponente 'Detailpage'
 const Detailpage = () => {
@@ -113,8 +114,12 @@ const Detailpage = () => {
         </div>
       </section>
 
-      {/* 'BackButton'-Komponente für das Zurücknavigieren */}
-      <BackButton />
+      <div className="btn-container">
+        {/* 'BackButton'-Komponente für das Zurücknavigieren */}
+        <BackButton />
+        {/* 'DeleteBtn'-Komponente für das Löschen */}
+        <DeleteBtn furnitureId={idFurniture} />
+      </div>
     </>
   );
 };

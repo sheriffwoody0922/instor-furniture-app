@@ -49,7 +49,15 @@ const FurnitureList = (props) => {
       </div>
       <main className="category-container">
         {/* Komponente 'FurnitureItem', um einzelne Möbelstücke anzuzeigen */}
-        <FurnitureItem data={furniture} />
+        <FurnitureItem
+          data={furniture}
+          refresh={refresh}
+          setRefresh={setRefresh}
+          queryKey={"size"}
+          categoryName={props.furnituresize}
+          setQueryKey={setQueryKey}
+          setCategoryName={setCategoryName}
+        />
         {/* Komponente 'CreateFurnitureForm', um ein neues Möbelstück hinzuzufügen */}
         <CreateFurnitureForm
           setRefresh={setRefresh}

@@ -1,3 +1,36 @@
+@font-face {
+  font-family: poppins-regular;
+  src: url("./Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: poppins-semibold;
+  src: url("./Poppins-SemiBold.ttf");
+}
+@font-face {
+  font-family: poppins-bold;
+  src: url("./Poppins-Bold.ttf");
+}
+@font-face {
+  font-family: poppins-regular;
+  src: url("./Poppins-Regular.ttf");
+}
+
+h1 {
+  font-family: poppins-bold;
+  font-size: 4.8rem;
+  line-height: 150%;
+}
+h2 {
+  font-family: poppins-semibold;
+  font-size: 2.4rem;
+  line-height: auto;
+}
+p {
+  font-family: poppins-semibold;
+  font-size: 2.4rem;
+  line-height: auto;
+}
+
 main {
   height: 100vh;
 }
@@ -9,12 +42,13 @@ img {
 a {
   text-decoration: none;
   color: black;
+  font-family: poppins-regular;
 }
 
 button {
   border: 1px solid black;
   padding: 1rem 2rem;
-  font-family: "Times New Roman", Times, serif;
+  font-family: poppins-regular;
   background-color: white;
   font-weight: 900;
   font-size: 1.8rem;

@@ -41,3 +41,7 @@
 .title-with-update-container h1 {
   font-size: 3rem;
 }
+.btn-container {
+  display: flex;
+  align-items: center;
+}
