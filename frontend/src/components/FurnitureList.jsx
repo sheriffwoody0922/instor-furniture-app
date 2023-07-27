@@ -22,19 +22,22 @@ const FurnitureList = (props) => {
   const [queryKey, setQueryKey] = useState("size");
   // Verwende die 'useEffect'-Hook, um Daten von der API zu laden, wenn sich 'refresh' ändert
   useEffect(() => {
-    if (typeof categoryName !== "undefined") {
+    if ((typeof categoryName !== "undefined") | !refresh) {
       const fetchData = async () => {
+        console.log(queryKey, categoryName);
         // Sende eine GET-Anfrage mit 'axios' an den Endpunkt '/api/furniture'
         // und füge die Abfrage-Parameter 'size' hinzu, die aus 'props.furnituresize' stammen
-        const data = await axios.get(
-          `/api/furniture?${queryKey}=${categoryName}`
-        );
+        const data = await axios.get("/api/furniture", {
+          params: { [queryKey]: categoryName },
+        });
 
         // Aktualisiere den Zustand 'furniture' mit den Daten aus der Antwort
         setFurniture(data.data);
       };
       fetchData();
     }
+
+    console.log("parent-compontent", refresh);
   }, [refresh, categoryName]);
 
   return (
@@ -48,7 +51,14 @@ const FurnitureList = (props) => {
         {/* Komponente 'FurnitureItem', um einzelne Möbelstücke anzuzeigen */}
         <FurnitureItem data={furniture} />
         {/* Komponente 'CreateFurnitureForm', um ein neues Möbelstück hinzuzufügen */}
-        <CreateFurnitureForm setRefresh={setRefresh} />
+        <CreateFurnitureForm
+          setRefresh={setRefresh}
+          refresh={refresh}
+          queryKey={"size"}
+          categoryName={props.furnituresize}
+          setQueryKey={setQueryKey}
+          setCategoryName={setCategoryName}
+        />
       </main>
       {/* Komponente 'BackButton', um zur vorherigen Seite zurückzukehren */}
     </div>
