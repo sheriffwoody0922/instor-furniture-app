@@ -13,17 +13,17 @@ cloudinary.config({
 
 // Definiere die Funktion 'uploadToCloudinary', die eine Datei zu Cloudinary hochlädt
 // Die Funktion erhält den Datei-Buffer (fileBuffer) und einen Callback als Parameter
-export const uploadToCloudinaryDirFurniture = (fileBuffer, callback) => {
+export const uploadToCloudinaryDirUser = (fileBuffer, callback) => {
   // Rufe den Cloudinary-Uploader auf und übergebe das 'image'-Ressourcentyp und den Ordner 'MyFurniture'
   // Der Callback wird ausgeführt, wenn der Upload abgeschlossen ist
   cloudinary.uploader
-    .upload_stream({ resource_type: "image", folder: "MyFurniture" }, callback)
+    .upload_stream({ resource_type: "image", folder: "MyUsers" }, callback)
     .end(fileBuffer); // Übergebe den Datei-Buffer an den Uploader
 };
 
 // Definiere die Funktion 'deleteFromCloudinary', die ein Bild mit der angegebenen Image-ID aus Cloudinary löscht
 // Die Funktion erhält die Image-ID als Parameter
-export const deleteFromCloudinaryDirFurniture = (imageId) => {
+export const deleteFromCloudinaryDirUser = (imageId) => {
   // Rufe den Cloudinary-Uploader auf und übergebe die Image-ID, die gelöscht werden soll
   // Ein Callback wird ausgeführt, um den Erfolg oder Fehler des Löschvorgangs zu behandeln
   cloudinary.uploader.destroy(imageId, (err) => {
