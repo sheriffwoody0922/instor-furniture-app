@@ -11,6 +11,8 @@ import Middlestuff from "./pages/MiddleStuff";
 import Smallstuff from "./pages/SmallStuff";
 import Detailpage from "./pages/Detailpage";
 import AllFurniture from "./pages/AllFurniture";
+import Register from "./pages/Register";
+import UserProfile from "./pages/UserProfile";
 
 // Definiere die App-Komponente
 function App() {
@@ -32,6 +34,10 @@ function App() {
           {/* Wenn der Pfad '/small-stuff' übereinstimmt, zeige die 'Smallstuff'-Komponente an */}
           <Route path="/furniture/:id" element={<Detailpage />} />{" "}
           {/* Wenn der Pfad '/furniture/:id' übereinstimmt , zeige die 'Detailpage'-Komponente an */}
+          <Route path="/register" element={<Register />} />{" "}
+          {/* Wenn der Pfad '/register' übereinstimmt , zeige die 'Register'-Komponente an */}
+          <Route path="/user/:userHandle" element={<UserProfile />} />{" "}
+          {/* Wenn der Pfad '/register' übereinstimmt , zeige die 'Register'-Komponente an */}
         </Routes>
       </BrowserRouter>
     </>
