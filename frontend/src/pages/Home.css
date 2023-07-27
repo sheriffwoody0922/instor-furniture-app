@@ -59,3 +59,29 @@
   width: 13vw;
   border-radius: 1rem;
 }
+.newest-furniture-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.homepage-furniture-item {
+  background-color: #f2f2f2;
+  border-radius: 2rem;
+}
+.homepage-furniture-item img {
+  border-radius: 2rem;
+  cursor: pointer;
+  object-fit: cover;
+}
+.homepage-furniture-info-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem;
+  gap: 4rem;
+}
+.homepage-furniture-img {
+  height: 60%;
+  object-fit: contain;
+  width: 100%;
+}
