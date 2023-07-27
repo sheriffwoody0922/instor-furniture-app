@@ -8,7 +8,14 @@ import { useState } from "react";
 import "./CreateFurnitureForm.css";
 
 // Definiere die React-Komponente 'CreateFurnitureForm'
-const CreateFurnitureForm = ({ setRefresh }) => {
+const CreateFurnitureForm = ({
+  setRefresh,
+  refresh,
+  queryKey,
+  categoryName,
+  setQueryKey,
+  setCategoryName,
+}) => {
   // Verwende die 'useState'-Hook, um den Zustand 'creatingNewItem' und die Zustandsvariablen 'title', 'content' zu initialisieren
   const [creatingNewItem, setCreatingNewItem] = useState(false);
   const [title, setTitle] = useState();
@@ -24,9 +31,10 @@ const CreateFurnitureForm = ({ setRefresh }) => {
     // Sende eine POST-Anfrage mit 'axios' an den Endpunkt '/api/addFurniture'
     const response = await axios.post("/api/addFurniture", formData);
 
-    // Aktualisiere die Ansicht, indem der 'setRefresh'-Prop aufgerufen wird
-    setRefresh((prev) => !prev);
-
+    // Aktualisiere die Ansicht, indem der 'setRefresh'-Prop aufgerufen wird und alte props zurückgegeben werden
+    setRefresh(!refresh);
+    setQueryKey(queryKey);
+    setCategoryName(categoryName);
     // Gib die Antwort in der Konsole aus
     console.log(response);
 
