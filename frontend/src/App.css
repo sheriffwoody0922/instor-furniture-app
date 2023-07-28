@@ -1,18 +1,18 @@
 @font-face {
   font-family: poppins-regular;
-  src: url("./poppins-regular.ttf");
+  src: url("./assets/poppins-regular.ttf");
 }
 @font-face {
   font-family: poppins-semibold;
-  src: url("./poppins-semibold.ttf");
+  src: url("./assets/poppins-semibold.ttf");
 }
 @font-face {
   font-family: poppins-bold;
-  src: url("./poppins-bold.ttf");
+  src: url("./assets/poppins-bold.ttf");
 }
 @font-face {
   font-family: poppins-regular;
-  src: url("./poppins-regular.ttf");
+  src: url("./assets/poppins-regular.ttf");
 }
 
 h1 {
