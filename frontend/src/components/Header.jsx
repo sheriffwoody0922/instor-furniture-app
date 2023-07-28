@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 // Importiere die CSS-Datei für das Styling der Komponente
 import "./Header.css";
 
-import Logo from "../assets/logo.png";
+import Logo from "../assets/logo-copy.png";
 import Person from "../assets/person.png";
 // Definiere die React-Komponente 'Header'
 const Header = () => {

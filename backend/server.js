@@ -18,10 +18,10 @@ import {
 import {
   getAllUsers,
   getAllUserTwo,
-  getUserById,
   addUser,
   updateUser,
   deleteUser,
+  getUserByHandleOrId,
 } from "./controllers/userController.js";
 
 // Importiere die Konfigurationsdatei und das Modell aus den entsprechenden Dateien
@@ -60,7 +60,7 @@ app.delete("/api/deleteFurniture/:id", deleteFurniture);
 
 // Definiere die Routen für die User-Endpoints und verknüpfe sie mit den entsprechenden Controller-Funktionen
 app.get("/api/user", getAllUserTwo);
-app.get("/api/user/:id", getUserById);
+app.get("/api/user/:userHandle", getUserByHandleOrId);
 app.post("/api/addUser", upload.single("image"), addUser);
 app.put("/api/updateUser/:id", upload.single("image"), updateUser);
 app.delete("/api/deleteUser/:id", deleteUser);

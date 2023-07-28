@@ -16,8 +16,7 @@ const UserProfile = () => {
       setUserData(data);
     };
     fetchData();
-  }, []);
-
+  }, [userHandle]);
   return (
     <>
       <Header />
