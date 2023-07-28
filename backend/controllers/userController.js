@@ -118,10 +118,11 @@ export const getAllUserTwo = async (req, res) => {
 };
 
 // Definiere die Funktion 'getUserById', die ein Möbelstück anhand seiner ID aus der Datenbank abruft
-export const getUserById = async (req, res) => {
+export const getUserByHandleOrId = async (req, res) => {
   try {
+    const { userHandleOrId } = req.params;
     // Rufe das Möbelstück aus der Datenbank anhand seiner ID (req.params.id) ab
-    const user = await User.findById(req.params.id);
+    const user = await User.findOne({ userHandleOrId });
     // Sende das Möbelstück als Antwort zurück
     res.send(user);
     // Gebe das Möbelstück auch in der Konsole aus

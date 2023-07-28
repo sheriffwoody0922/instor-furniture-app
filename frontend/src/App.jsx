@@ -2,7 +2,7 @@
 import "./App.css";
 
 // Importiere die notwendigen Komponenten und Funktionen aus dem 'react-router-dom'-Modul
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 
 // Importiere die verschiedenen Seiten-Komponenten aus ihren jeweiligen Dateien
 import Home from "./pages/Home";
