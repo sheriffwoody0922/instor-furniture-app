@@ -2,11 +2,9 @@
 // die für die Navigation in der React-App verwendet wird
 import { useNavigate } from "react-router-dom";
 
-// Importiere das Bild für den Zurück-Button und die zugehörige CSS-Datei
-import btnImg from "../../assets/backbtn.png";
+import btnImg from "../../assets/backbtntrans.svg";
 import "./BackButton.css";
 
-// Definiere die React-Komponente 'BackButton'
 const BackButton = () => {
   // Verwende die 'useNavigate'-Hook, um die 'navigate'-Funktion für die Navigation zu erhalten
   const navigate = useNavigate();
@@ -17,18 +15,14 @@ const BackButton = () => {
     navigate(-1);
   };
 
-  // Rückgabe des React-Elements, das den Zurück-Button darstellt
   return (
     <>
-      {/* Ein Button-Element, das die 'goBack'-Funktion ausführt, wenn es geklickt wird,
-      und die Klasse 'BackBtn' verwendet, um das Erscheinungsbild des Buttons zu definieren */}
-      <button onClick={goBack} className="BackBtn">
-        {/* Ein Bild-Element, das das Back-Button-Bild aus der 'btnImg'-Quelle anzeigt */}
+      <button onClick={goBack} className="back-btn">
         <img src={btnImg} alt="Back" />
+        <p>Back</p>
       </button>
     </>
   );
 };
 
-// Exportiere die 'BackButton'-Komponente, damit sie in anderen Dateien verwendet werden kann
 export default BackButton;

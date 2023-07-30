@@ -4,22 +4,23 @@ import Header from "../../components/Header/Header";
 // Importiere die 'FurnitureList'-Komponente aus dem '../components/FurnitureList'-Modul
 import FurnitureList from "../../components/FurnitureList/FurnitureList";
 import { useState } from "react";
+import PageHeader from "../../components/PageHeader/PageHeader";
+import MiddleStuffImg from "../../assets/middlestuff.avif";
+
 // Definiere die React-Komponente 'MiddleStuff'
 const MiddleStuff = () => {
   const [categoryName, setCategoryName] = useState("mittel");
+  const [pageTitle, setPageTitle] = useState("Middle Stuff");
+
   return (
     <>
-      {/* Container für den grauen Header */}
-      <section className="header-grau">
-        {/* Header-Komponente anzeigen */}
-        <Header />
-      </section>
-
-      {/* 'FurnitureList'-Komponente anzeigen und die Requisit 'furnituresize' mit dem Wert "mittel" übergeben */}
-      <FurnitureList furnituresize={categoryName} />
+      <Header />
+      <main>
+        <PageHeader pageTitle={pageTitle} imgUrl={MiddleStuffImg} />
+        <FurnitureList furnituresize={categoryName} />
+      </main>
     </>
   );
 };
 
-// Exportiere die 'MiddleStuff'-Komponente, damit sie in anderen Dateien verwendet werden kann
 export default MiddleStuff;

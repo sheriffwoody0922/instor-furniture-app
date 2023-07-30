@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import deletebtn from "../../assets/deletebtn.svg";
+import "./DeleteBtn.css";
 
 // Definiere die React-Komponente 'EditBtn'
 const DeleteBtn = ({
@@ -30,8 +32,8 @@ const DeleteBtn = ({
       {/* Verwende die 'NavLink'-Komponente, um den 'Edit'-Button als Link zu definieren,
       der zu der spezifischen Seite '/furniture/${props.furnitureId}' navigiert */}
 
-      <button onClick={deleteItem} className="edit-btn">
-        Delete
+      <button onClick={deleteItem} className="delete-btn">
+        <img src={deletebtn} alt={furnitureId} />
       </button>
     </>
   );

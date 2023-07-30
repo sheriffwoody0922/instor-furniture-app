@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import button from "../../assets/button.png";
+import addbutton from "../../assets/addbtn.svg";
 import "./AddBtn.css";
 import axios from "axios";
 
@@ -25,7 +25,7 @@ const AddBtn = (props) => {
   return (
     <>
       <button className="add-to-wishlist-btn" onClick={addItemToUser}>
-        <img src={button} alt={furnitureId} />
+        <img src={addbutton} alt={furnitureId} />
       </button>
     </>
   );
