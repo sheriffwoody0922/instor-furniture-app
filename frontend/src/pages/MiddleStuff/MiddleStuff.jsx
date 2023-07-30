@@ -1,8 +1,8 @@
 // Importiere die 'Header'-Komponente aus dem '../components/Header'-Modul
-import Header from "../components/Header";
+import Header from "../../components/Header/Header";
 
 // Importiere die 'FurnitureList'-Komponente aus dem '../components/FurnitureList'-Modul
-import FurnitureList from "../components/FurnitureList";
+import FurnitureList from "../../components/FurnitureList/FurnitureList";
 import { useState } from "react";
 // Definiere die React-Komponente 'MiddleStuff'
 const MiddleStuff = () => {

@@ -1,8 +1,8 @@
 // Importiere die 'FurnitureList'-Komponente aus dem '../components/FurnitureList'-Modul
-import FurnitureList from "../components/FurnitureList";
+import FurnitureList from "../../components/FurnitureList/FurnitureList";
 
 // Importiere die 'Header'-Komponente aus dem '../components/Header'-Modul
-import Header from "../components/Header";
+import Header from "../../components/Header/Header";
 import { useState } from "react";
 // Definiere die React-Komponente 'SmallStuff'
 const SmallStuff = () => {
@@ -15,7 +15,7 @@ const SmallStuff = () => {
         <Header />
       </section>
 
-      {/* 'FurnitureList'-Komponente anzeigen und die Requisit 'furnituresize' mit dem Wert "klein" übergeben */}
+      {/* 'FurnitureList'-Komponente anzeigen und die prop 'furnituresize' mit dem Wert "klein" übergeben */}
       <FurnitureList furnituresize={categoryName} />
     </>
   );

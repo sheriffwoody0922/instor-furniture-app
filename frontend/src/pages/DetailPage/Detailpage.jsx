@@ -1,5 +1,5 @@
 // Importiere die 'Header'-Komponente aus dem '../components/Header'-Modul
-import Header from "../components/Header";
+import Header from "../../components/Header/Header";
 
 // Importiere die 'useParams'-Hook aus 'react-router-dom', um die URL-Parameter zu erhalten
 import { useParams } from "react-router-dom";
@@ -11,14 +11,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 // Importiere die 'UpdateBtn'-Komponente aus dem '../components/UpdateBtn'-Modul
-import UpdateBtn from "../components/UpdateBtn";
+import UpdateBtn from "../../components/UpdateBtn/UpdateBtn";
 
 // Importiere die CSS-Datei für das Styling der Komponente
 import "./DetailPage.css";
 
 // Importiere die 'BackButton'-Komponente aus dem '../components/BackButton'-Modul
-import BackButton from "../components/BackButton";
-import DeleteBtn from "../components/DeleteBtn";
+import BackButton from "../../components/BackButton/BackButton";
+import DeleteBtn from "../../components/DeleteBtn/DeleteBtn";
 
 // Definiere die React-Komponente 'Detailpage'
 const Detailpage = () => {

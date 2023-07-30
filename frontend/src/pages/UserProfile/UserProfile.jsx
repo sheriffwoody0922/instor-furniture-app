@@ -1,8 +1,9 @@
-import Header from "../components/Header";
+import Header from "../../components/Header/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./UserProfile.css";
+import MyFurnitureSlider from "../../components/MyFurnitureSlider/MyFurnitureSlider";
 
 const UserProfile = () => {
   const params = useParams();
@@ -34,15 +35,7 @@ const UserProfile = () => {
         </div>
       </section>
       <main>
-        <section className="big-stuff-container">
-          <h2>BigStuff</h2>
-        </section>
-        <section className="middle-stuff-container">
-          <h2>MiddleStuff</h2>
-        </section>
-        <section className="small-stuff-container">
-          <h2>SmallStuff</h2>
-        </section>
+        <MyFurnitureSlider userData={userData} />
       </main>
     </>
   );

@@ -1,14 +1,5 @@
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 5rem;
-  background-color: white;
-}
-
-header a {
-  font-size: 1.6vw;
-  color: rgb(93, 91, 91);
+  padding: 2rem 0rem;
 }
 
 header a:hover {
@@ -18,19 +9,17 @@ header a:hover {
 nav {
   display: flex;
   gap: 5rem;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-}
-
-.header-grau {
-  background-color: rgb(226, 225, 225);
+  padding: 0 5rem;
 }
 nav a {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 nav a button:hover {
   transform: scale(1.1);
 }
@@ -39,13 +28,13 @@ nav a button {
   border-radius: 2rem;
   background-color: black;
   color: white;
+  transition: all ease-in-out 50ms;
 }
 
 .dropbtn {
   cursor: pointer;
   font-family: poppins-regular;
-  font-size: 1.6vw;
-  color: rgb(93, 91, 91);
+  font-size: 2rem;
 }
 .dropbtn:hover {
   color: black;
@@ -59,9 +48,11 @@ nav a button {
 .dropdown-content {
   display: none;
   position: absolute;
+
   background-color: #f9f9f9;
   min-width: 25rem;
   z-index: 1;
+  padding: 2rem;
 }
 
 .dropdown-content a {
@@ -84,4 +75,5 @@ nav a button {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  position: relative;
 }
