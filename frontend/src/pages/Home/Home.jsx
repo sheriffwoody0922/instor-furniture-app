@@ -4,19 +4,15 @@ import { NavLink } from "react-router-dom";
 // Importiere die 'Header'-Komponente aus dem '../components/Header'-Modul
 import Header from "../../components/Header/Header";
 
-// Importiere die Bilddateien für die Kategorien 'bigStuff', 'middleStuff' und 'smallStuff'
-import bigStuff from "../../assets/bigstuff.avif";
-import middleStuff from "../../assets/middlestuff.avif";
-import smallStuff from "../../assets/smallstuff.avif";
-
 // Importiere die CSS-Datei für das Styling der Komponente
 import "./Home.css";
 
-import button from "../../assets/button.png";
 // Importiere axios für das erste Fetchen der Daten
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
+import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
+import PopularArticlesGrid from "../../components/PopularArticlesGrid/PopularArticlesGrid";
 // Definiere die React-Komponente 'Home'
 const Home = () => {
   const [allfurnitures, setAllFurnitures] = useState();
@@ -32,55 +28,17 @@ const Home = () => {
     <>
       <Header />
       <main>
+        <section className="furniture-header">
+          <h1>
+            Verwalte deine Möbel <br></br> Einfach. Digital. Online
+          </h1>
+        </section>
         <section className="furniture-home">
-          <article className="furniture-header">
-            <h1>
-              <span>M</span>Y FURNITURE
-            </h1>
-          </article>
+          <h2>Unsere Möbel</h2>
+          <NavLink to="/furnitures">Mehr entdecken</NavLink>
         </section>
-        <h2>Categories</h2>
-        <section className="furniture-link">
-          <NavLink className="home-link" to="/big-stuff">
-            <article className="home-stuff">
-              <img src={bigStuff} alt="big-stuff" />
-              <h6>BIG STUFF</h6>
-            </article>
-          </NavLink>
-          <NavLink className="home-link" to="/middle-stuff">
-            <article className="home-stuff">
-              <img src={middleStuff} alt="middle-stuff" />
-              <h6>NOT SO BIG STUFF</h6>
-            </article>
-          </NavLink>
-          <NavLink className="home-link" to="/small-stuff">
-            <article className="home-stuff">
-              <img src={smallStuff} alt="small-stuff"></img>
-              <h6>SMALL STUFF</h6>
-            </article>
-          </NavLink>
-        </section>
-        <h2>Popular</h2>
-        <section className="newest-furniture-container">
-          {allfurnitures?.map((furniture) => (
-            <div key={furniture._id} className="homepage-furniture-item">
-              <Link to={`/furniture/${furniture._id}`}>
-                <img
-                  src={furniture.image.url}
-                  className="homepage-furniture-img"
-                />
-              </Link>
-              <div className="homepage-furniture-info-container">
-                <div>
-                  <h3>{furniture.room}</h3>
-                  <h2>{furniture.title}</h2>
-                  <h2>{furniture.size}</h2>
-                </div>
-                <img src={button} alt="" />
-              </div>
-            </div>
-          ))}
-        </section>
+        <CategoryBanner />
+        <PopularArticlesGrid productData={allfurnitures} />
       </main>
     </>
   );

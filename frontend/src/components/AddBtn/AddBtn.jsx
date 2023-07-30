@@ -1,7 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import button from "../../assets/button.png";
+import "./AddBtn.css";
 import axios from "axios";
 
 const AddBtn = (props) => {
+  const [furnitureId, setFurnitureId] = useState();
+  const [userId, setUserId] = useState();
+
   const addItemToUser = async () => {
     const furnitureId = props.furnitureID;
     const userId = props.userId;
@@ -11,9 +16,17 @@ const AddBtn = (props) => {
       { _id: userId, inventoryId: furnitureId }
     );
   };
+
+  useEffect(() => {
+    setFurnitureId(props.furnitureID);
+    setUserId(props.userId);
+  }, [props]);
+
   return (
     <>
-      <button onClick={addItemToUser}>Wishlist</button>
+      <button className="add-to-wishlist-btn" onClick={addItemToUser}>
+        <img src={button} alt={furnitureId} />
+      </button>
     </>
   );
 };
