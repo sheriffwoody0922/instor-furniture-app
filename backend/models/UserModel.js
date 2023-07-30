@@ -61,6 +61,8 @@ const userSchema = new mongoose.Schema(
       required: [true, "Bitte gebe ein Passwort ein!"],
       unique: false,
     },
+    // Hier werden alle Möbelstücke gespeichert, die auf die InventoryDaten referenzieren
+    inventory: [{ type: mongoose.Types.ObjectId, ref: "Furniture" }],
   },
   { timestamps: true }
 );

@@ -25,8 +25,13 @@ h2 {
   font-size: 2.4rem;
   line-height: auto;
 }
-p {
+h3 {
   font-family: poppins-semibold;
+  font-size: 1.8rem;
+  line-height: auto;
+}
+p {
+  font-family: poppins-regular;
   font-size: 2.4rem;
   line-height: auto;
 }
@@ -39,10 +44,12 @@ img {
   max-width: 100%;
 }
 
-a {
+a,
+span {
   text-decoration: none;
   color: black;
   font-family: poppins-regular;
+  font-size: 2rem;
 }
 
 button {
@@ -54,4 +61,8 @@ button {
   font-size: 1.8rem;
   color: rgb(54, 54, 54);
   cursor: pointer;
+}
+
+main {
+  padding: 0 5rem;
 }

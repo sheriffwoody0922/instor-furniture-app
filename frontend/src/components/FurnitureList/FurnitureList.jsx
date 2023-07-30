@@ -5,10 +5,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 // Importiere die Komponenten 'FurnitureItem', 'CreateFurnitureForm' und 'BackButton' aus den entsprechenden Dateien
-import FurnitureItem from "./FurnitureItem";
-import CreateFurnitureForm from "./CreateFurnitureForm";
-import BackButton from "./BackButton";
-import Search from "../components/Search";
+import FurnitureItem from "../FurnitureItem/FurnitureItem";
+import CreateFurnitureForm from "../CreateFurnitureForm/CreateFurnitureForm";
+import BackButton from "../BackButton/BackButton";
+import Search from "../Search/Search";
 // Importiere die CSS-Datei für das Styling der Komponente
 import "./FurnitureList.css";
 

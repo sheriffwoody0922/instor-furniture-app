@@ -22,6 +22,7 @@ import {
   updateUser,
   deleteUser,
   getUserByHandleOrId,
+  addFurnitureToUser,
 } from "./controllers/userController.js";
 
 // Importiere die Konfigurationsdatei und das Modell aus den entsprechenden Dateien
@@ -63,6 +64,7 @@ app.get("/api/user", getAllUserTwo);
 app.get("/api/user/:userHandle", getUserByHandleOrId);
 app.post("/api/addUser", upload.single("image"), addUser);
 app.put("/api/updateUser/:id", upload.single("image"), updateUser);
+app.put("/api/addFurnitureToUser/:id", addFurnitureToUser);
 app.delete("/api/deleteUser/:id", deleteUser);
 
 // Definiere einen Catch-All-Route für alle anderen Anfragen und sende die Index-Datei des Frontends

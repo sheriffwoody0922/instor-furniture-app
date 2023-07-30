@@ -3,7 +3,7 @@
 import { useNavigate } from "react-router-dom";
 
 // Importiere das Bild für den Zurück-Button und die zugehörige CSS-Datei
-import btnImg from "../assets/backbtn.png";
+import btnImg from "../../assets/backbtn.png";
 import "./BackButton.css";
 
 // Definiere die React-Komponente 'BackButton'

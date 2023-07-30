@@ -2,12 +2,13 @@
 import { useEffect, useState } from "react";
 
 // Importiere die Komponenten 'BackButton' und 'EditBtn' aus den entsprechenden Dateien
-import BackButton from "./BackButton";
-import EditBtn from "./EditBtn";
+import BackButton from "../BackButton/BackButton";
+import EditBtn from "../EditBtn/EditBtn";
 
 // Importiere die CSS-Datei für das Styling der Komponente
 import "./FurnitureItem.css";
-import DeleteBtn from "./DeleteBtn";
+import DeleteBtn from "../DeleteBtn/DeleteBtn";
+import AddBtn from "../AddBtn/AddBtn";
 
 // Definiere die React-Komponente 'FurnitureItem'
 const FurnitureItem = ({
@@ -22,6 +23,8 @@ const FurnitureItem = ({
   // Verwende die 'useState'-Hook, um den Zustand 'furnitureData' zu initialisieren
   // mit dem anfänglichen Wert 'props.data', das die Möbelstück-Daten enthält
   const [furnitureData, setFurnitureData] = useState(data);
+
+  const [userId, setUserId] = useState("64c26f431bef911903662774");
 
   // Verwende die 'useEffect'-Hook, um den Zustand 'furnitureData' zu aktualisieren,
   // wenn sich die Prop 'props.data' ändert
@@ -67,6 +70,7 @@ const FurnitureItem = ({
                 setQueryKey={setQueryKey}
                 setCategoryName={setCategoryName}
               />
+              <AddBtn furnitureID={furniture._id} userId={userId} />
             </div>
           </div>
         ))}

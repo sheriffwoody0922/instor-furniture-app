@@ -245,6 +245,28 @@ export const updateUser = async (req, res) => {
   }
 };
 
+// Definiere die Funktion 'addFurnitureToUser', die ein Möbelstück aus der Datenbank zu dem Userprofil hinzufügt
+export const addFurnitureToUser = async (req, res) => {
+  // Gebe das empfangene Dateiobjekt und die empfangenen Daten in der Konsole aus
+  console.log(req.body);
+  try {
+    // Es wird die User ID und die Möbelstück ID aus dem Request gespeichert
+    const { _id } = req.body;
+    const { inventoryId } = req.body;
+
+    // Rufe den User aus der Datenbank basierend auf der ID auf
+    const user = await User.findOne({ _id });
+    // Der User Eintrag aus der Datenbank erhält das jeweilige Möbelstück
+    user.inventory.push(inventoryId);
+    // Der User wird aktualisiert und in der Datenbank gespeichert
+    await user.save();
+  } catch (err) {
+    // Bei einem Fehler logge den Fehler in der Konsole und sende den Statuscode 500 zurück
+    console.log("Error:", err);
+    res.status(500).send("There was an error.");
+  }
+};
+
 // Definiere die Funktion 'deleteUser', die ein Möbelstück aus der Datenbank löscht
 export const deleteUser = async (req, res) => {
   try {
