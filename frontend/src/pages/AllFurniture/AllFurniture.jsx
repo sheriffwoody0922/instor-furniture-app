@@ -3,18 +3,21 @@ import Header from "../../components/Header/Header";
 
 // Importiere die 'FurnitureList'-Komponente aus dem '../components/FurnitureList'-Modul
 import FurnitureList from "../../components/FurnitureList/FurnitureList";
+import PageHeader from "../../components/PageHeader/PageHeader";
+import SmallStuffImg from "../../assets/smallstuff.avif";
 
+import { useState } from "react";
 // Definiere die React-Komponente 'BigStuff'
 const AllFurniture = () => {
+  const [categoryName, setCategoryName] = useState("mittel");
+  const [pageTitle, setPageTitle] = useState("All Furnitures");
   return (
     <>
-      {/* Header-Bereich mit grauem Hintergrund */}
-      <section className="header-grau">
-        {/* Zeige die 'Header'-Komponente an */}
-        <Header />
-      </section>
-      {/* Zeige die 'FurnitureList'-Komponente mit der 'furnituresize' prop 'gross' an */}
-      <FurnitureList furnituresize={""} />
+      <Header />
+      <main>
+        <PageHeader pageTitle={pageTitle} imgUrl={SmallStuffImg} />
+        <FurnitureList furnituresize={""} />
+      </main>
     </>
   );
 };

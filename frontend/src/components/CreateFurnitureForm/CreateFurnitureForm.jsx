@@ -3,6 +3,7 @@ import axios from "axios";
 
 // Importiere die 'useState'-Hook aus 'react', um den Zustand in der Komponente zu verwalten
 import { useState } from "react";
+import addsomethingbtn from "../../assets/addsomethingbtn.svg";
 
 // Importiere die CSS-Datei für das Styling der Komponente
 import "./CreateFurnitureForm.css";
@@ -81,7 +82,7 @@ const CreateFurnitureForm = ({
           className="add-new-item-btn"
           onClick={() => setCreatingNewItem(true)}
         >
-          Add Something
+          <img src={addsomethingbtn} />
         </button>
       </>
     );

@@ -4,22 +4,23 @@ import Header from "../../components/Header/Header";
 // Importiere die 'FurnitureList'-Komponente aus dem '../components/FurnitureList'-Modul
 import FurnitureList from "../../components/FurnitureList/FurnitureList";
 import { useState } from "react";
+import PageHeader from "../../components/PageHeader/PageHeader";
+
+import BigStuffImg from "../../assets/bigstuff.avif";
 
 // Definiere die React-Komponente 'BigStuff'
 const BigStuff = () => {
   const [categoryName, setCategoryName] = useState("gross");
+  const [pageTitle, setPageTitle] = useState("Big Stuff");
   return (
     <>
-      {/* Header-Bereich mit grauem Hintergrund */}
-      <section className="header-grau">
-        {/* Zeige die 'Header'-Komponente an */}
-        <Header />
-      </section>
-      {/* Zeige die 'FurnitureList'-Komponente mit der 'furnituresize' prop 'gross' an */}
-      <FurnitureList furnituresize={categoryName} />
+      <Header />
+      <main>
+        <PageHeader pageTitle={pageTitle} imgUrl={BigStuffImg} />
+        <FurnitureList furnituresize={categoryName} />
+      </main>
     </>
   );
 };
 
-// Exportiere die 'BigStuff'-Komponente, damit sie in anderen Dateien verwendet werden kann
 export default BigStuff;

@@ -1,8 +1,6 @@
 // Importiere die 'useEffect' und 'useState'-Hooks aus 'react', um den Zustand in der Komponente zu verwalten
 import { useEffect, useState } from "react";
 
-// Importiere die Komponenten 'BackButton' und 'EditBtn' aus den entsprechenden Dateien
-import BackButton from "../BackButton/BackButton";
 import EditBtn from "../EditBtn/EditBtn";
 
 // Importiere die CSS-Datei für das Styling der Komponente
@@ -37,16 +35,16 @@ const FurnitureItem = ({
       <section className="furniture-item-container">
         {furnitureData?.map((furniture) => (
           <div key={furniture._id} className="furniture-item">
-            <div className="item-img-container">
-              <img src={furniture.image.url} alt={furniture.name} />
-            </div>
+            <div
+              className="furniture-img-container"
+              style={{ backgroundImage: `url(${furniture.image.url})` }}
+            ></div>
+
             <div className="descr-container">
-              <div className="header-container">
-                <h2>{furniture.title}</h2>
-              </div>
-              <h3>{furniture.room}</h3>
-              <h3>Beschreibung</h3>
-              <p>{furniture.description}</p>
+              <p>{furniture.room}</p>
+              <h2>{furniture.title}</h2>
+              <p>Beschreibung</p>
+              <p className="descr-txt">{furniture.description}</p>
               <p>Größe: {furniture.size}</p>
             </div>
             <div className="button-container">
@@ -64,7 +62,6 @@ const FurnitureItem = ({
             </div>
           </div>
         ))}
-        <BackButton />
       </section>
     </>
   );

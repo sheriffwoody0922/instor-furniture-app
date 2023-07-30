@@ -6,7 +6,7 @@
   padding: 2rem;
   background-color: white;
   position: fixed;
-  right: 1rem;
+  right: 5rem;
 }
 .add-title {
   font-size: 2.4rem;
@@ -34,7 +34,10 @@
 }
 .add-new-item-btn {
   position: fixed;
-  right: 1rem;
+  right: 5rem;
+  border: none;
+  background-color: transparent;
+  padding: unset;
 }
 .add-text-input-field {
   height: 10vh;

@@ -41,35 +41,35 @@ const FurnitureList = (props) => {
   }, [refresh, categoryName]);
 
   return (
-    <div className="furniture-gallery">
-      <Search setCategoryName={setCategoryName} setQueryKey={setQueryKey} />
-      <div>
-        {/* Überschrift der Möbelliste */}
-        <h1>Liste aller Möbel</h1>
-      </div>
-      <main className="category-container">
-        {/* Komponente 'FurnitureItem', um einzelne Möbelstücke anzuzeigen */}
-        <FurnitureItem
-          data={furniture}
-          refresh={refresh}
-          setRefresh={setRefresh}
-          queryKey={"size"}
-          categoryName={props.furnituresize}
-          setQueryKey={setQueryKey}
-          setCategoryName={setCategoryName}
-        />
-        {/* Komponente 'CreateFurnitureForm', um ein neues Möbelstück hinzuzufügen */}
-        <CreateFurnitureForm
-          setRefresh={setRefresh}
-          refresh={refresh}
-          queryKey={"size"}
-          categoryName={props.furnituresize}
-          setQueryKey={setQueryKey}
-          setCategoryName={setCategoryName}
-        />
-      </main>
-      {/* Komponente 'BackButton', um zur vorherigen Seite zurückzukehren */}
-    </div>
+    <>
+      <CreateFurnitureForm
+        setRefresh={setRefresh}
+        refresh={refresh}
+        queryKey={"size"}
+        categoryName={props.furnituresize}
+        setQueryKey={setQueryKey}
+        setCategoryName={setCategoryName}
+      />
+      <section className="furniture-gallery">
+        <Search setCategoryName={setCategoryName} setQueryKey={setQueryKey} />
+
+        <div>
+          <h1>Liste aller Möbel</h1>
+        </div>
+
+        <section className="category-container">
+          <FurnitureItem
+            data={furniture}
+            refresh={refresh}
+            setRefresh={setRefresh}
+            queryKey={"size"}
+            categoryName={props.furnituresize}
+            setQueryKey={setQueryKey}
+            setCategoryName={setCategoryName}
+          />
+        </section>
+      </section>
+    </>
   );
 };
 
