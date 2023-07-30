@@ -34,33 +34,23 @@ const FurnitureItem = ({
 
   return (
     <>
-      {/* Abschnitt für das Anzeigen eines einzelnen Möbelstücks */}
       <section className="furniture-item-container">
         {furnitureData?.map((furniture) => (
-          // Div-Element für ein einzelnes Möbelstück mit der eindeutigen 'key' basierend auf der 'furniture._id'
           <div key={furniture._id} className="furniture-item">
             <div className="item-img-container">
-              {/* Bild des Möbelstücks, die URL wird aus 'furniture.image.url' geholt */}
               <img src={furniture.image.url} alt={furniture.name} />
             </div>
             <div className="descr-container">
               <div className="header-container">
-                {/* Titel des Möbelstücks */}
                 <h2>{furniture.title}</h2>
               </div>
-              {/* Raum des Möbelstücks */}
               <h3>{furniture.room}</h3>
               <h3>Beschreibung</h3>
-              {/* Beschreibung des Möbelstücks */}
               <p>{furniture.description}</p>
-              {/* Größe des Möbelstücks */}
               <p>Größe: {furniture.size}</p>
             </div>
             <div className="button-container">
-              {/* Komponente 'EditBtn', die den 'Edit'-Button darstellt, um das Möbelstück zu bearbeiten */}
               <EditBtn furnitureId={furniture._id} />
-              {/* Komponente 'DeleteBtn', die den 'Delete'-Button darstellt, um das Möbelstück zu bearbeiten */}
-
               <DeleteBtn
                 furnitureId={furniture._id}
                 setRefresh={setRefresh}
@@ -74,7 +64,6 @@ const FurnitureItem = ({
             </div>
           </div>
         ))}
-        {/* Komponente 'BackButton', die den 'Back'-Button darstellt, um zur vorherigen Seite zurückzukehren */}
         <BackButton />
       </section>
     </>

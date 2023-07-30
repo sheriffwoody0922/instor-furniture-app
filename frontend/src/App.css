@@ -27,7 +27,7 @@ h2 {
 }
 h3 {
   font-family: poppins-semibold;
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: auto;
 }
 p {
@@ -65,4 +65,9 @@ button {
 
 main {
   padding: 0 5rem;
+}
+
+section {
+  margin-bottom: 4.8rem;
+  margin-top: 4.8rem;
 }
