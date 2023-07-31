@@ -1,47 +1,63 @@
 .details-container {
   display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
+  width: 100%;
+  gap: 2.4rem;
+  height: 80vh;
 }
+.details-container p {
+  font-size: 1.6rem;
+}
+
 .img-with-update-container {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
-  width: 100%;
+
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: space-between;
+  align-items: flex-start;
   padding: 2rem;
+  height: 100%;
+  border-radius: 2rem;
 }
 .img-outer-container {
-  width: 60vw;
-  height: 80vh;
+  width: 40%;
 }
+
 .text-outer-container {
   display: flex;
   flex-direction: column;
-  padding: 12rem 2rem;
+  width: 60%;
 }
 .title-with-update-container,
 .room-with-update-container,
-.description-with-update-container,
 .size-with-update-container {
   display: flex;
   gap: 5rem;
-  margin-bottom: 5rem;
+  align-items: center;
 }
-.title-with-update-container p,
-.room-with-update-container p,
-.description-with-update-container p,
-.size-with-update-container p {
-  font-size: 2rem;
-}
-.title-with-update-container h1 {
-  font-size: 3rem;
-}
+
 .btn-container {
   display: flex;
   align-items: center;
+}
+.room-with-update-container p {
+  text-transform: uppercase;
+  font-family: poppins-semibold;
+  font-size: 1.6rem;
+  color: #969696;
+}
+
+.descr-container p:nth-child(3) {
+  font-size: 1.8rem;
+  font-family: poppins-semibold;
+}
+.size-with-update-container p {
+  font-family: poppins-semibold;
+  font-size: 2.4rem;
+  color: #e34a4a;
+}
+.title-with-update-container {
+  justify-content: space-between;
 }

@@ -10,3 +10,11 @@
 .update-btn-container textarea {
   height: 20vh;
 }
+.update-btn {
+  border: none;
+  background-color: transparent;
+  padding: unset;
+}
+.update-btn img {
+  max-width: 10rem;
+}

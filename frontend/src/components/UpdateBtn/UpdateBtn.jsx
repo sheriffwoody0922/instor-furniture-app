@@ -1,5 +1,6 @@
 // Importiere die 'useState'-Hook aus 'react', um den Zustand in der Komponente zu verwalten
 import { useState } from "react";
+import editbtn from "../../assets/editbtn.svg";
 
 // Importiere das 'axios'-Modul für HTTP-Anfragen
 import axios from "axios";
@@ -121,7 +122,9 @@ const UpdateBtn = ({ itemKeyName, setRefresh, id }) => {
     // Ansonsten, wenn sich der Bearbeitungsmodus nicht aktiviert hat, zeige den 'Edit'-Button an
     return (
       <>
-        <button onClick={() => setIsEditing(true)}>Edit</button>
+        <button className="update-btn" onClick={() => setIsEditing(true)}>
+          <img src={editbtn}></img>
+        </button>
       </>
     );
   }
