@@ -1,7 +1,6 @@
-// Importiere das 'mongoose'-Modul, um mit MongoDB zu interagieren
-import mongoose from "mongoose";
+import { mongoose } from "mongoose";
+import crypto from "crypto";
 
-// Definiere ein Mongoose-Schema namens 'userSchema' für die 'Furniture'-Dokumente in der Datenbank
 const userSchema = new mongoose.Schema(
   {
     // Feld 'userHandle': Eine Zeichenkette (String) ist erforderlich (required),
@@ -20,52 +19,61 @@ const userSchema = new mongoose.Schema(
         message: "Dein Username muss mit einem '@' beginnen",
       },
     },
-    // Feld 'name': Eine Zeichenkette (String) ist erforderlich (required),
-    // mit einer Mindestlänge von 5 Zeichen und einer maximalen Länge von 1000 Zeichen
     name: {
       type: String,
       required: true,
       minlength: 3,
       maxlength: 1000,
     },
-    // Feld 'description': Eine Zeichenkette (String) ist erforderlich (required),
-    // mit einer Mindestlänge von 5 Zeichen und einer maximalen Länge von 1000 Zeichen
     description: {
       type: String,
       required: false,
       minlength: 5,
       maxlength: 1000,
     },
-
-    // Feld 'inventory': Eine Zeichenkette (String), die aus einer festen Liste von Werten (enum) ausgewählt werden muss,
-    inventory: {
-      type: String,
-      required: false,
-    },
-    // Feld 'image': Ein verschachteltes Objekt, das aus den Feldern 'url' und 'imageId' besteht,
-    // beide Felder sind Zeichenketten (String) und sind erforderlich (required)
+    // inventory: {
+    //   type: String,
+    //   required: false,
+    // },
     image: {
       type: {
         url: String,
         imageId: String,
       },
-      required: true,
+      required: false,
     },
     email: {
       type: String,
       required: [true, "Bitte gebe eine Emailadresse ein ein!"],
       unique: [true, "Die Email Adresse existiert bereits"],
     },
-    password: {
-      type: String,
-      required: [true, "Bitte gebe ein Passwort ein!"],
-      unique: false,
-    },
+    // password: {
+    //   type: String,
+    //   required: [true, "Bitte gebe ein Passwort ein!"],
+    //   unique: false,
+    // },
     // Hier werden alle Möbelstücke gespeichert, die auf die InventoryDaten referenzieren
     inventory: [{ type: mongoose.Types.ObjectId, ref: "Furniture" }],
+    salt: { type: String, required: true, select: false },
+    hash: { type: String, required: true, select: false },
   },
   { timestamps: true }
 );
 
+userSchema.methods.setPassword = function (password) {
+  // Salt
+  this.salt = crypto.randomBytes(64).toString("hex");
+  //   Password mit salt hashen
+  this.hash = crypto
+    .pbkdf2Sync(password, this.salt, 1000, 64, "sha512")
+    .toString("hex");
+};
+
+userSchema.methods.verifyPassword = function (password) {
+  const hash = crypto
+    .pbkdf2Sync(password, this.salt, 1000, 64, "sha512")
+    .toString("hex");
+  return this.hash === hash;
+};
 // Exportiere das Mongoose-Modell 'User', das auf dem definierten 'postsSchema' basiert
 export const User = mongoose.model("User", userSchema);

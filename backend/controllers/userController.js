@@ -7,7 +7,6 @@ import {
   deleteFromCloudinaryDirUser,
 } from "../helpers/cloudinaryHelperUser.js";
 
-// Definiere die Funktion 'getAllUsers', die alle User aus der Datenbank abruft
 export const getAllUsers = async (req, res) => {
   try {
     // Rufe alle Möbelstücke aus der Datenbank basierend auf den Anfragenparametern (req.query) ab. Wenn keine query übermittelt werden, dann werden alle Möbelstücke aus der Datenbank geladen. zb die Url "./api/user?size=gross"
@@ -117,7 +116,6 @@ export const getAllUserTwo = async (req, res) => {
   }
 };
 
-// Definiere die Funktion 'getUserById', die ein Möbelstück anhand seiner ID aus der Datenbank abruft
 export const getUserByHandleOrId = async (req, res) => {
   try {
     const { userHandleOrId } = req.params;
@@ -134,7 +132,6 @@ export const getUserByHandleOrId = async (req, res) => {
   }
 };
 
-// Definiere die Funktion 'addUser', die ein neues Möbelstück zur Datenbank hinzufügt
 export const addUser = async (req, res) => {
   // Gebe das empfangene Dateiobjekt in der Konsole aus
   console.log(req.file);
@@ -176,7 +173,6 @@ export const addUser = async (req, res) => {
   }
 };
 
-// Definiere die Funktion 'updateUser', die ein Möbelstück in der Datenbank aktualisiert
 export const updateUser = async (req, res) => {
   // Gebe das empfangene Dateiobjekt und die empfangenen Daten in der Konsole aus
   console.log(req.file);
@@ -245,7 +241,6 @@ export const updateUser = async (req, res) => {
   }
 };
 
-// Definiere die Funktion 'addFurnitureToUser', die ein Möbelstück aus der Datenbank zu dem Userprofil hinzufügt
 export const addFurnitureToUser = async (req, res) => {
   // Gebe das empfangene Dateiobjekt und die empfangenen Daten in der Konsole aus
   console.log(req.body);
@@ -288,5 +283,41 @@ export const deleteUser = async (req, res) => {
     // Bei einem Fehler logge den Fehler in der Konsole und sende den Statuscode 500 zurück
     console.log(err);
     res.status(500).send("There was an error");
+  }
+};
+
+export const signupUser = async (req, res) => {
+  console.log(req.body);
+  const { name, email, password, userHandle } = req.body;
+  let user = new User({ name, email, userHandle });
+  user.setPassword(password);
+  user = await user.save();
+  res.send({ message: "New user created", user: user });
+};
+
+export const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email }).select("+hash").select("+salt");
+  if (!user) {
+    res.status(404).send({
+      message: "Failed to login",
+      error: {
+        message: "Password and Email combination is wrong",
+      },
+    });
+    return;
+  }
+
+  const passwordIsValid = await user.verifyPassword(password);
+
+  if (passwordIsValid) {
+    res.send({ message: "Success", data: user });
+  } else {
+    res.status(404).send({
+      message: "Failed to login",
+      error: {
+        message: "Password and Email combination is wrong",
+      },
+    });
   }
 };
