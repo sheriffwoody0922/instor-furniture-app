@@ -1,14 +1,21 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const LoginUserForm = () => {
-  // Definiere die Funktion 'handleSubmit', die aufgerufen wird, wenn das Formular gesendet wird
   const handleSubmit = async (e) => {
-    console.log(e.target.value);
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    try {
+      const response = await axios.post("/api/user/login", formData);
+
+      e.target.reset();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <>
-      {/* Formular für das Erstellen eines neuen Möbelstücks */}
       <form onSubmit={handleSubmit} className="new-user-form-container">
         <h2 className="add-title">Login</h2>
         <input
