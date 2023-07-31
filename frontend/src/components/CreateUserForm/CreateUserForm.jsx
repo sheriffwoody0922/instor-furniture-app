@@ -7,26 +7,16 @@ import { Link } from "react-router-dom";
 
 // Definiere die React-Komponente 'CreateFurnitureForm'
 const CreateUserForm = () => {
-  // Definiere die Funktion 'handleSubmit', die aufgerufen wird, wenn das Formular gesendet wird
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Erstelle ein 'FormData'-Objekt aus dem gesendeten Formular
     const formData = new FormData(e.target);
-
-    // Sende eine POST-Anfrage mit 'axios' an den Endpunkt '/api/addFurniture'
-    const response = await axios.post("/api/addUser", formData);
-
-    // Gib die Antwort in der Konsole aus
+    const response = await axios.post("/api/user/signup", formData);
     console.log(response);
-
-    // Setze das Formular zurück, um es für weitere Eingaben vorzubereiten
     e.target.reset();
   };
 
   return (
     <>
-      {/* Formular für das Erstellen eines neuen Möbelstücks */}
       <form onSubmit={handleSubmit} className="new-user-form-container">
         <h2 className="add-title">ADD NEW User</h2>
         <input
@@ -36,12 +26,7 @@ const CreateUserForm = () => {
           required
         />
         <input type="text" placeholder="Dein Name" name="name" required />
-        <input
-          type="file"
-          placeholder="Dein Profilbild"
-          name="image"
-          required
-        />
+        <input type="file" placeholder="Dein Profilbild" name="image" />
         <textarea
           className="add-text-input-field"
           placeholder="Eine kurze Beschreibung über dich"
