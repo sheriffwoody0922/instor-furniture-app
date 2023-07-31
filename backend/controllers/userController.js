@@ -287,25 +287,48 @@ export const deleteUser = async (req, res) => {
 };
 
 export const signupUser = async (req, res) => {
-  console.log(req.body);
-  const { name, email, password, userHandle } = req.body;
-  let user = new User({ name, email, userHandle });
-  user.setPassword(password);
-  user = await user.save();
-  res.send({ message: "New user created", user: user });
+  try {
+    if (!req.file) {
+      return res.status(400).send("No image file found.");
+    }
+
+    uploadToCloudinaryDirUser(req.file.buffer, async (err, result) => {
+      if (err) {
+        console.log("Cloudinary upload error:", err);
+        return res.status(500).send("Error uploading image to Cloudinary.");
+      }
+
+      console.log("Cloudinary upload result:", result);
+      console.log(req.body);
+      const { name, email, password, userHandle, description } = req.body;
+      let user = new User({
+        name,
+        email,
+        userHandle,
+        description,
+        image: { url: result.secure_url, imageId: result.public_id },
+      });
+      user.setPassword(password);
+
+      user = await user.save();
+      res.send({ message: "New user created", user: user });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: "Internal Server Error" });
+  }
 };
 
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email }).select("+hash").select("+salt");
   if (!user) {
-    res.status(404).send({
+    return res.status(404).send({
       message: "Failed to login",
       error: {
         message: "Password and Email combination is wrong",
       },
     });
-    return;
   }
 
   const passwordIsValid = await user.verifyPassword(password);

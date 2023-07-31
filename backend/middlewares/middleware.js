@@ -19,3 +19,4 @@ app.use(morgan("dev"));
 
 // Verwende die Middleware 'express.json()', um eingehende Anfragedaten (z. B. JSON-Daten) zu parsen
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
