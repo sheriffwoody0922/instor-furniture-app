@@ -1,12 +1,21 @@
-// Importiere das 'User'-Modell aus der '../models/UserModel.js'-Datei
-// sowie die Funktionen 'uploadToCloudinary' und 'deleteFromCloudinary'
-// aus der '../helpers/cloudinaryHelper.js'-Datei
 import { User } from "../models/UserModel.js";
 import {
   uploadToCloudinaryDirUser,
   deleteFromCloudinaryDirUser,
 } from "../helpers/cloudinaryHelperUser.js";
 
+import { generateAccessToken } from "../middlewares/authenticateToken.js";
+
+import jwt from "jsonwebtoken";
+import { app } from "../middlewares/middleware.js";
+
+import dotenv from "dotenv";
+import "../config/config.js";
+dotenv.config();
+
+const hoursInMillisec = (hours) => {
+  return 1000 * 60 * 60 * hours;
+};
 export const getAllUsers = async (req, res) => {
   try {
     // Rufe alle Möbelstücke aus der Datenbank basierend auf den Anfragenparametern (req.query) ab. Wenn keine query übermittelt werden, dann werden alle Möbelstücke aus der Datenbank geladen. zb die Url "./api/user?size=gross"
@@ -262,7 +271,6 @@ export const addFurnitureToUser = async (req, res) => {
   }
 };
 
-// Definiere die Funktion 'deleteUser', die ein Möbelstück aus der Datenbank löscht
 export const deleteUser = async (req, res) => {
   try {
     // Extrahiere die Möbelstück-ID aus der Anfrage
@@ -334,6 +342,16 @@ export const loginUser = async (req, res) => {
   const passwordIsValid = await user.verifyPassword(password);
 
   if (passwordIsValid) {
+    // const token = jwt.sign(user.toJSON(), process.env.TOKEN_SECRET, {
+    //   expiresIn: "1h",
+    // });
+    // // document.cookie = `token=${token}`;
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    // });
+    const token = generateAccessToken({ email });
+    console.log("token");
+    res.cookie("auth", token, { httpOnly: true, maxAge: hoursInMillisec(1) });
     res.send({ message: "Success", data: user });
   } else {
     res.status(404).send({
@@ -343,4 +361,9 @@ export const loginUser = async (req, res) => {
       },
     });
   }
+};
+
+export const authenticateUser = async (req, res) => {
+  console.log(req.userEmail);
+  res.send("SUCCESS");
 };
