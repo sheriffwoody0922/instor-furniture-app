@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 
 // Importiere die Middleware 'app' und 'upload' aus der Datei './middlewares/middleware.js'
 import { app, upload } from "./middlewares/middleware.js";
+import { authenticateToken } from "./middlewares/authenticateToken.js";
 
 // Importiere die Controller-Funktionen für die Möbel-Endpoints
 import {
@@ -25,6 +26,7 @@ import {
   addFurnitureToUser,
   loginUser,
   signupUser,
+  authenticateUser,
 } from "./controllers/userController.js";
 
 // Importiere die Konfigurationsdatei und das Modell aus den entsprechenden Dateien
@@ -55,7 +57,7 @@ const FE_INDEX = join(__dirname, "../frontend/dist/index.html");
 
 // Routen
 // Definiere die Routen für die Möbel-Endpoints und verknüpfe sie mit den entsprechenden Controller-Funktionen
-app.get("/api/furniture", getAllFurnitureTwo);
+app.get("/api/furniture", authenticateToken, getAllFurnitureTwo);
 app.get("/api/furniture/:id", getFurnitureById);
 app.post("/api/addFurniture", upload.single("image"), addFurniture);
 app.put("/api/updateFurniture/:id", upload.single("image"), updateFurniture);
@@ -63,13 +65,14 @@ app.delete("/api/deleteFurniture/:id", deleteFurniture);
 
 // Definiere die Routen für die User-Endpoints und verknüpfe sie mit den entsprechenden Controller-Funktionen
 app.get("/api/user", getAllUserTwo);
-app.get("/api/user/:userHandle", getUserByHandleOrId);
+app.get("/api/user/:userHandle", authenticateToken, getUserByHandleOrId);
 app.post("/api/addUser", upload.single("image"), addUser);
 app.put("/api/updateUser/:id", upload.single("image"), updateUser);
 app.put("/api/addFurnitureToUser/:id", addFurnitureToUser);
 app.delete("/api/deleteUser/:id", deleteUser);
 app.post("/api/user/login", upload.single("image"), loginUser);
 app.post("/api/user/signup", upload.single("image"), signupUser);
+app.get("/secure", authenticateToken, authenticateUser);
 
 // Definiere einen Catch-All-Route für alle anderen Anfragen und sende die Index-Datei des Frontends
 app.get("*", (req, res) => res.sendFile(FE_INDEX));

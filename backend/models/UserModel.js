@@ -31,10 +31,7 @@ const userSchema = new mongoose.Schema(
       minlength: 5,
       maxlength: 1000,
     },
-    // inventory: {
-    //   type: String,
-    //   required: false,
-    // },
+
     image: {
       type: {
         url: String,

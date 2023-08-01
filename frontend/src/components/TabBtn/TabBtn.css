@@ -1,0 +1,10 @@
+.tab-btn {
+  border-radius: 3rem;
+  background-color: rgb(227, 150, 74, 0.24);
+  border: none;
+  color: #e3964a;
+}
+.tab-btn-container {
+  display: flex;
+  gap: 1.4rem;
+}
