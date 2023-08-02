@@ -67,3 +67,12 @@ section {
   margin-bottom: 4.8rem;
   margin-top: 4.8rem;
 }
+input,
+textarea {
+  border-radius: 1rem;
+  padding: 0.5rem 2rem;
+  border: 2px solid rgba(0, 0, 0, 0.16);
+  color: rgba(0, 0, 0, 0.36);
+  font-family: poppins-regular;
+  font-size: 1.6rem;
+}

@@ -1,25 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import addbutton from "../../assets/addbtn.svg";
 import "./AddBtn.css";
 import axios from "axios";
+import { SignUpedUserId } from "../../context/Context";
 
 const AddBtn = (props) => {
   const [furnitureId, setFurnitureId] = useState();
   const [userId, setUserId] = useState();
+  const { loginUserId, setLoginUserId } = useContext(SignUpedUserId);
 
   const addItemToUser = async () => {
     const furnitureId = props.furnitureID;
     const userId = props.userId;
 
     const updateUserItems = await axios.put(
-      `/api/addFurnitureToUser/${props.userId}`,
-      { _id: userId, inventoryId: furnitureId }
+      `/api/addFurnitureToUser/${loginUserId}`,
+      { _id: loginUserId, inventoryId: furnitureId }
     );
   };
 
   useEffect(() => {
     setFurnitureId(props.furnitureID);
-    setUserId(props.userId);
   }, [props]);
 
   return (

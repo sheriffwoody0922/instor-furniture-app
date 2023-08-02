@@ -12,7 +12,7 @@ const BackButton = () => {
   // Definiere die Funktion 'goBack', die aufgerufen wird, wenn der Zurück-Button geklickt wird
   const goBack = () => {
     // Navigiere zurück zur vorherigen Seite (eine Stelle in der History zurück)
-    navigate(-1);
+    navigate(-1, { relative: "path" });
   };
 
   return (

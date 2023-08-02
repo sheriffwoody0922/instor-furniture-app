@@ -77,3 +77,9 @@ nav a button {
   gap: 1rem;
   position: relative;
 }
+.login-img-useravatar {
+  object-fit: cover;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+}

@@ -22,7 +22,7 @@ const CreateUserForm = () => {
         <input
           type="text"
           placeholder="Dein Username beginnend mit einem @"
-          name="userHandle"
+          name="userhandle"
           required
         />
         <input type="text" placeholder="Dein Name" name="name" required />

@@ -6,12 +6,10 @@ import Header from "../../components/Header/Header";
 const Register = () => {
   return (
     <>
-      {/* Container für den grauen Header */}
-      <section className="header-grau">
-        {/* Header-Komponente anzeigen */}
-        <Header />
-      </section>
-      <CreateUserForm />
+      <Header />
+      <main>
+        <CreateUserForm />
+      </main>
     </>
   );
 };
