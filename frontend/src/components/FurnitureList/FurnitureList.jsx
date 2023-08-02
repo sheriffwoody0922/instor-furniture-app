@@ -24,7 +24,6 @@ const FurnitureList = (props) => {
   useEffect(() => {
     if ((typeof categoryName !== "undefined") | !refresh) {
       const fetchData = async () => {
-        console.log(queryKey, categoryName);
         // Sende eine GET-Anfrage mit 'axios' an den Endpunkt '/api/furniture'
         // und füge die Abfrage-Parameter 'size' hinzu, die aus 'props.furnituresize' stammen
         const data = await axios.get("/api/furniture", {
@@ -36,8 +35,6 @@ const FurnitureList = (props) => {
       };
       fetchData();
     }
-
-    console.log("parent-compontent", refresh);
   }, [refresh, categoryName]);
 
   return (

@@ -143,13 +143,16 @@ export const getUserByHandleOrId = async (req, res) => {
 
 export const addUser = async (req, res) => {
   // Gebe das empfangene Dateiobjekt in der Konsole aus
-  console.log(req.file);
+  // console.log(req.file);
+
   try {
     // Überprüfen, ob das Bild erfolgreich hochgeladen wurde
     if (!req.file) {
       // Wenn keine Datei gefunden wurde, sende den Statuscode 400 mit einer Fehlermeldung zurück
       return res.status(400).send("No image file found.");
     }
+
+    // console.log("line159: " + req.body);
 
     // Cloudinary-Upload-Stream-Ereignis mit Fehlerbehandlung
     uploadToCloudinaryDirUser(req.file.buffer, async (err, result) => {
@@ -161,6 +164,7 @@ export const addUser = async (req, res) => {
 
       // Gebe das Ergebnis des Cloudinary-Uploads in der Konsole aus
       console.log("Cloudinary upload result:", result);
+
       try {
         // Erstelle ein neues Möbelstück in der Datenbank mit den empfangenen Daten sowie der URL und Image-ID des hochgeladenen Bildes. Dabei wird das Body der Anfrage übernommen und gleichzeitig um den key image erweitert, welcher die Values von Cloudinary enthält
         const response = await User.create({
@@ -307,12 +311,11 @@ export const signupUser = async (req, res) => {
       }
 
       console.log("Cloudinary upload result:", result);
-      console.log(req.body);
-      const { name, email, password, userHandle, description } = req.body;
+      const { name, email, password, userhandle, description } = req.body;
       let user = new User({
         name,
         email,
-        userHandle,
+        userhandle,
         description,
         image: { url: result.secure_url, imageId: result.public_id },
       });

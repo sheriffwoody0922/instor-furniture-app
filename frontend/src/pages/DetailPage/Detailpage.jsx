@@ -7,6 +7,9 @@ import "./DetailPage.css";
 import BackButton from "../../components/BackButton/BackButton";
 import DeleteBtn from "../../components/DeleteBtn/DeleteBtn";
 import TabBtn from "../../components/TabBtn/TabBtn";
+import ReviewBox from "../../components/ReviewBox/ReviewBox";
+import PopularArticlesGrid from "../../components/PopularArticlesGrid/PopularArticlesGrid";
+import SimilarProductGrid from "../../components/SimilarProductGrid/SimilarProductGrid";
 
 const Detailpage = () => {
   const params = useParams();
@@ -22,7 +25,10 @@ const Detailpage = () => {
     };
     fetchData();
   }, [refresh]);
-
+  const updateRefresh = () => {
+    window.scrollTo(0, 0);
+    setRefresh((prevRefresh) => !prevRefresh);
+  };
   return (
     <>
       <Header />
@@ -66,7 +72,7 @@ const Detailpage = () => {
                 />
               </div>
             </div>
-
+            <ReviewBox />
             <div className="description-with-update-container">
               <TabBtn />
               <div className="description-with-update-inner-container">
@@ -83,6 +89,10 @@ const Detailpage = () => {
         <div className="btn-container">
           <DeleteBtn furnitureId={idFurniture} />
         </div>
+        <SimilarProductGrid
+          similarProducts={furniture.room}
+          updateRefresh={updateRefresh}
+        />
       </main>
     </>
   );

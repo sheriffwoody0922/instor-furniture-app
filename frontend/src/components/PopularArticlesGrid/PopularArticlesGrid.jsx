@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import "./PopularArticlesGrid.css";
-import { Link } from "react-router-dom";
 
-import AddBtn from "../AddBtn/AddBtn";
-import FurnitureItem from "../FurnitureItem/FurnitureItem";
 import PopularItem from "../PopularItem/PopularItem";
 
 const PopularArticlesGrid = (props) => {

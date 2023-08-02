@@ -9,8 +9,6 @@ const Search = ({ setCategoryName, setQueryKey }) => {
     setInputName(e.target.name);
   };
 
-  //   console.log(setCategoryName);
-
   useEffect(() => {
     setCategoryName(input);
     setQueryKey(inputName);
