@@ -26,6 +26,7 @@ import {
   loginUser,
   signupUser,
   authenticateUser,
+  logoutUser,
 } from "./controllers/userController.js";
 
 // Importiere die Konfigurationsdatei und das Modell aus den entsprechenden Dateien
@@ -71,7 +72,8 @@ app.put("/api/addFurnitureToUser/:id", addFurnitureToUser);
 app.delete("/api/deleteUser/:id", deleteUser);
 app.post("/api/user/login", upload.single("image"), loginUser);
 app.post("/api/user/signup", upload.single("image"), signupUser);
-app.get("/secure", authenticateToken, authenticateUser);
+app.get("/api/user/secure", authenticateToken, authenticateUser);
+app.get("/api/userlogout", logoutUser);
 
 // Definiere einen Catch-All-Route für alle anderen Anfragen und sende die Index-Datei des Frontends
 app.get("*", (req, res) => res.sendFile(FE_INDEX));
