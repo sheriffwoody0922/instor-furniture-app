@@ -76,3 +76,8 @@ textarea {
   font-family: poppins-regular;
   font-size: 1.6rem;
 }
+small {
+  color: red;
+  font-family: poppins-regular;
+  font-size: 2rem;
+}

@@ -1,74 +1,77 @@
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./LoginUserForm.css";
+import { useState, useContext, useEffect } from "react";
+import { useNavigate, Link, NavLink } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
+import BackButtonGrey from "../BackButtonGrey/BackButtonGrey";
 
-import { SignUpedUserId } from "../../context/Context";
-
-import { useContext, useEffect, useState } from "react";
-
-import "./LoadingUserForm.css";
-
-const LoginUserForm = () => {
+export default function Login() {
   const [responseData, setResponseData] = useState([]);
-  const { loginUserId, setLoginUserId } = useContext(SignUpedUserId);
-  const [loginSuccess, setLoginSuccess] = useState(false);
-  const navigate = useNavigate();
 
+  const [userHandle, setUserHandle] = useState();
+  const { refetch, isLoggedIn } = useContext(UserContext);
+  const nav = useNavigate();
+  const [error, setError] = useState(null);
+  const [loginSuccess, setLoginSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    setError(null);
+    const data = new FormData(e.currentTarget);
     try {
-      const response = await axios.post("/api/user/login", formData);
-      if (
-        response.status == 200 &&
-        response.config.loginUserId == loginUserId
-      ) {
-        setLoginSuccess(true);
-        setResponseData(response.data.data);
-        setTimeout(() => {
-          navigate(`/user/${response.data.data.userHandle}`);
-        }, 2000);
-      }
+      const resp = await axios.post("/api/user/login", data);
+      refetch();
+      setLoginSuccess(true);
+
+      setResponseData(resp.data.data);
+
+      setUserHandle(resp.data.data.userhandle);
+      setTimeout(() => {
+        nav(`/user/${resp.data.data.userhandle}`);
+      }, 2000);
       e.target.reset();
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      console.log(e);
+      setError("Bitte überprüfe deine Eingabe");
+      e.target.reset();
     }
   };
 
-  useEffect(() => {
-    setLoginUserId(responseData._id);
-  }, [responseData, loginSuccess]);
-
-  if (loginSuccess === false) {
-    return (
-      <>
-        <form onSubmit={handleSubmit} className="new-user-form-container">
-          <h2 className="add-title">Login</h2>
-          <input
-            type="email"
-            placeholder="Deine Emailadresse"
-            name="email"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Dein Password"
-            name="password"
-            required
-          />
-          <button className="submit-btn" type="submit">
-            Login
-          </button>
-          <Link to="/register">
-            <button className="to-register-btn">
-              Noch kein Konto? Konto anlegen
-            </button>
-          </Link>
-        </form>
-      </>
-    );
-  } else if (loginSuccess === true) {
-    return (
-      <>
+  return (
+    <>
+      {!isLoggedIn && (
+        <div className="login-user-form-container">
+          <div className="login-title-container">
+            <BackButtonGrey />
+            <h1>Login</h1>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="input-fields-container">
+              <input
+                type="email"
+                placeholder="Deine Emailadresse"
+                name="email"
+                required
+              />
+              <input
+                type="password"
+                placeholder="Dein Passwort"
+                name="password"
+                required
+              />
+              {error && <small>{error}</small>}
+              <button className="submit-btn" type="submit">
+                Login
+              </button>
+              <Link to="/register">
+                <button className="to-register-btn">
+                  Noch kein Konto? Konto anlegen
+                </button>
+              </Link>
+            </div>
+          </form>
+        </div>
+      )}
+      {isLoggedIn && (
         <section className="login-animation">
           <div className="lds-grid">
             <div></div>
@@ -81,11 +84,9 @@ const LoginUserForm = () => {
             <div></div>
             <div></div>
           </div>
-          <h1>Loading</h1>
+          <h1>Loading...</h1>
         </section>
-      </>
-    );
-  }
-};
-
-export default LoginUserForm;
+      )}
+    </>
+  );
+}

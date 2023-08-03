@@ -2,10 +2,9 @@
 // die für die Navigation in der React-App verwendet wird
 import { useNavigate } from "react-router-dom";
 
-import btnImg from "../../assets/backbtntrans.svg";
 import "./BackButton.css";
 
-const BackButton = () => {
+const BackButton = (props) => {
   // Verwende die 'useNavigate'-Hook, um die 'navigate'-Funktion für die Navigation zu erhalten
   const navigate = useNavigate();
 
@@ -18,7 +17,7 @@ const BackButton = () => {
   return (
     <>
       <button onClick={goBack} className="back-btn">
-        <img src={btnImg} alt="Back" />
+        <img src={props.arrow} alt="Back" />
         <p>Back</p>
       </button>
     </>

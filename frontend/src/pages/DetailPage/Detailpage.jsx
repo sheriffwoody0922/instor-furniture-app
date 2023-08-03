@@ -10,6 +10,7 @@ import TabBtn from "../../components/TabBtn/TabBtn";
 import ReviewBox from "../../components/ReviewBox/ReviewBox";
 import PopularArticlesGrid from "../../components/PopularArticlesGrid/PopularArticlesGrid";
 import SimilarProductGrid from "../../components/SimilarProductGrid/SimilarProductGrid";
+import btnImg from "../../assets/backbtntrans.svg";
 
 const Detailpage = () => {
   const params = useParams();
@@ -39,7 +40,7 @@ const Detailpage = () => {
               className="img-with-update-container"
               style={{ backgroundImage: `url(${furniture.image?.url})` }}
             >
-              <BackButton />
+              <BackButton arrow={btnImg} />
               <UpdateBtn
                 itemKeyName={"img"}
                 id={idFurniture}

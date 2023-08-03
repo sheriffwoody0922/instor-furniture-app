@@ -10,7 +10,6 @@ const UserProfile = () => {
   const userHandle = params.userHandle;
   const [userData, setUserData] = useState([]);
 
-  // Verwende die 'useEffect'-Hook, um die Daten des Möbelstücks mit der angegebenen 'idFurniture' aus der API abzurufen
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(`/api/user/${userHandle}`);
@@ -28,7 +27,7 @@ const UserProfile = () => {
         ></div>
 
         <div className="user-txt-container">
-          <h1>{userData.userHandle}</h1>
+          <h1>{userData.userhandle}</h1>
           <p>{userData.description}</p>
           <p>Name: {userData.name}</p>
           <p>Email: {userData.email}</p>
