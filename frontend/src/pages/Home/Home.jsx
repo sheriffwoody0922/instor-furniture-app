@@ -13,6 +13,8 @@ import { useEffect, useState } from "react";
 
 import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
 import PopularArticlesGrid from "../../components/PopularArticlesGrid/PopularArticlesGrid";
+import Banner from "../../components/Banner/Banner";
+import Footer from "../../components/Footer/Footer";
 // Definiere die React-Komponente 'Home'
 const Home = () => {
   const [allfurnitures, setAllFurnitures] = useState();
@@ -33,13 +35,11 @@ const Home = () => {
             Verwalte deine Möbel <br></br> Einfach. Digital. Online
           </h1>
         </section>
-        <section className="furniture-home">
-          <h2>Unsere Möbel</h2>
-          <NavLink to="/furnitures">Mehr entdecken</NavLink>
-        </section>
+        <Banner />
         <CategoryBanner />
         <PopularArticlesGrid productData={allfurnitures} />
       </main>
+      <Footer />
     </>
   );
 };
