@@ -6,9 +6,6 @@ import {
 
 import { generateAccessToken } from "../middlewares/authenticateToken.js";
 
-import jwt from "jsonwebtoken";
-import { app } from "../middlewares/middleware.js";
-
 import dotenv from "dotenv";
 import "../config/config.js";
 dotenv.config();
@@ -345,13 +342,6 @@ export const loginUser = async (req, res) => {
   const passwordIsValid = await user.verifyPassword(password);
 
   if (passwordIsValid) {
-    // const token = jwt.sign(user.toJSON(), process.env.TOKEN_SECRET, {
-    //   expiresIn: "1h",
-    // });
-    // // document.cookie = `token=${token}`;
-    // res.cookie("token", token, {
-    //   httpOnly: true,
-    // });
     const token = generateAccessToken({ email });
     console.log("token");
     res.cookie("auth", token, { httpOnly: true, maxAge: hoursInMillisec(1) });
@@ -368,5 +358,12 @@ export const loginUser = async (req, res) => {
 
 export const authenticateUser = async (req, res) => {
   console.log(req.userEmail);
-  res.send("SUCCESS");
+  res.send({ email: req.userEmail });
+};
+
+export const logoutUser = async (req, res) => {
+  console.log(req.body);
+  res.clearCookie("auth");
+  res.send("OK");
+  console.log("cookies sollten gelöscht sein");
 };
