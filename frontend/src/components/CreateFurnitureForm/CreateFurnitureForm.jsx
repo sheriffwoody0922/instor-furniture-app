@@ -17,67 +17,57 @@ const CreateFurnitureForm = ({
   setQueryKey,
   setCategoryName,
 }) => {
-  // Verwende die 'useState'-Hook, um den Zustand 'creatingNewItem' und die Zustandsvariablen 'title', 'content' zu initialisieren
   const [creatingNewItem, setCreatingNewItem] = useState(false);
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
 
-  // Definiere die Funktion 'handleSubmit', die aufgerufen wird, wenn das Formular gesendet wird
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Erstelle ein 'FormData'-Objekt aus dem gesendeten Formular
     const formData = new FormData(e.target);
 
-    // Sende eine POST-Anfrage mit 'axios' an den Endpunkt '/api/addFurniture'
     const response = await axios.post("/api/addFurniture", formData);
 
-    // Aktualisiere die Ansicht, indem der 'setRefresh'-Prop aufgerufen wird und alte props zurückgegeben werden
     setRefresh(!refresh);
     setQueryKey(queryKey);
     setCategoryName(categoryName);
-    // Gib die Antwort in der Konsole aus
     console.log(response);
 
-    // Setze das Formular zurück, um es für weitere Eingaben vorzubereiten
     e.target.reset();
   };
 
-  // Wenn der Bearbeitungsmodus aktiviert ist, wird das Aussehen der Komponente geändert
   if (creatingNewItem) {
     return (
       <>
-        {/* Formular für das Erstellen eines neuen Möbelstücks */}
-        <form onSubmit={handleSubmit} className="new-furniture-form-container">
-          <h2 className="add-title">ADD NEW ITEM</h2>
-          <input type="text" placeholder="TITLE" name="title" required />
-          <input type="text" placeholder="ROOM" name="room" required />
-          <input type="text" placeholder="SIZE" name="size" required />
-          <input type="file" placeholder="IMAGE" name="image" required />
-          <textarea
-            className="add-text-input-field"
-            placeholder="ADD TEXT"
-            name="description"
-            required
-          />
-          <button className="submit-btn" type="submit">
-            PUBLISH
-          </button>
+        <div className="new-furniture-form-container">
+          <h2>Add new Item</h2>
+          <form onSubmit={handleSubmit}>
+            <input type="text" placeholder="TITLE" name="title" required />
+            <input type="text" placeholder="ROOM" name="room" required />
+            <input type="text" placeholder="SIZE" name="size" required />
+            <input type="file" placeholder="IMAGE" name="image" required />
+            <textarea
+              className="add-text-input-field"
+              placeholder="ADD TEXT"
+              name="description"
+              required
+            />
+            <button className="submit-btn" type="submit">
+              PUBLISH
+            </button>
+          </form>
           <button
-            className="abort-btn"
+            className="abortt-btn "
             onClick={() => setCreatingNewItem(false)}
-            type="button"
           >
-            X
+            Abbruch
           </button>
-        </form>
+        </div>
       </>
     );
   } else {
-    // Im Anzeigemodus, der standardmäßig geladen wird, wenn die JSX-Komponente geladen wird
     return (
       <>
-        {/* Button zum Aktivieren des Bearbeitungsmodus */}
         <button
           className="add-new-item-btn"
           onClick={() => setCreatingNewItem(true)}
@@ -89,5 +79,4 @@ const CreateFurnitureForm = ({
   }
 };
 
-// Exportiere die 'CreateFurnitureForm'-Komponente, damit sie in anderen Dateien verwendet werden kann
 export default CreateFurnitureForm;
