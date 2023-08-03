@@ -2,12 +2,12 @@ import { useEffect, useState, useContext } from "react";
 import addbutton from "../../assets/addbtn.svg";
 import "./AddBtn.css";
 import axios from "axios";
-import { SignUpedUserId } from "../../context/Context";
+import { UserContext } from "../../context/UserContext";
 
 const AddBtn = (props) => {
   const [furnitureId, setFurnitureId] = useState();
   const [userId, setUserId] = useState();
-  const { loginUserId, setLoginUserId } = useContext(SignUpedUserId);
+  const { user } = useContext(UserContext);
 
   const addItemToUser = async () => {
     const furnitureId = props.furnitureID;
@@ -15,7 +15,7 @@ const AddBtn = (props) => {
 
     const updateUserItems = await axios.put(
       `/api/addFurnitureToUser/${loginUserId}`,
-      { _id: loginUserId, inventoryId: furnitureId }
+      { _id: user._id, inventoryId: furnitureId }
     );
   };
 

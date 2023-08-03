@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import BackButton from "../BackButton/BackButton";
 import "./PageHeader.css";
+import btnImg from "../../assets/backbtntrans.svg";
 
 const PageHeader = (props) => {
   const [pageHeaderTitle, setPageHeaderTitle] = useState();
@@ -16,7 +17,7 @@ const PageHeader = (props) => {
         className="pageheader"
         style={{ backgroundImage: `url(${backgroundImgUrl})` }}
       >
-        <BackButton />
+        <BackButton arrow={btnImg} />
         <h1>{pageHeaderTitle}</h1>
       </section>
     </>

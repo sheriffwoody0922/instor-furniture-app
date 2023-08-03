@@ -2,7 +2,7 @@
 import "./App.css";
 
 // Importiere die notwendigen Komponenten und Funktionen aus dem 'react-router-dom'-Modul
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 // Importiere die verschiedenen Seiten-Komponenten aus ihren jeweiligen Dateien
 import Home from "./pages/Home/Home";
@@ -15,29 +15,23 @@ import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import UserProfile from "./pages/UserProfile/UserProfile";
 
-import { SignUpedUserId } from "./context/Context";
 import { useState } from "react";
 
 // Definiere die App-Komponente
 function App() {
-  const [loginUserId, setLoginUserId] = useState();
   return (
     <>
-      <SignUpedUserId.Provider value={{ loginUserId, setLoginUserId }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/big-stuff" element={<Bigstuff />} />
-            <Route path="/allfurnitures" element={<AllFurniture />} />
-            <Route path="/middle-stuff" element={<Middlestuff />} />
-            <Route path="/small-stuff" element={<Smallstuff />} />
-            <Route path="/furniture/:id" element={<Detailpage />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/user/:userHandle" element={<UserProfile />} />
-          </Routes>
-        </BrowserRouter>
-      </SignUpedUserId.Provider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/big-stuff" element={<Bigstuff />} />
+        <Route path="/allfurnitures" element={<AllFurniture />} />
+        <Route path="/middle-stuff" element={<Middlestuff />} />
+        <Route path="/small-stuff" element={<Smallstuff />} />
+        <Route path="/furniture/:id" element={<Detailpage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/user/:userHandle" element={<UserProfile />} />
+      </Routes>
     </>
   );
 }
