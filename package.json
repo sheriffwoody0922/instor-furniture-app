@@ -2,6 +2,7 @@
   "name": "mein-projekt",
   "version": "1.0.0",
   "scripts": {
+    "start":"cd ./backend/ && node server.js",
     "start-backend": "cd backend && npm run dev2",
     "start-frontend": "cd frontend && npm run dev",
     "dev": "concurrently \"npm run start-backend\" \"npm run start-frontend\""
