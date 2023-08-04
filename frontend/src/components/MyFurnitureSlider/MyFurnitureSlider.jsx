@@ -16,7 +16,7 @@ const MyFurnitureSlider = (props) => {
             const { data } = await axios.get(`/api/furniture/${element}`);
             return data;
           });
-          console.log(promises);
+          // console.log("Check Datastream:", promises);
           const userFurnitureData = await Promise.all(promises);
           const smallFurniture = userFurnitureData.filter(
             (item) => item.size === "klein"

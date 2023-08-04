@@ -7,6 +7,7 @@ import { UserContext } from "../../context/UserContext";
 
 const Header = () => {
   const { isLoggedIn, logout, user } = useContext(UserContext);
+
   return (
     <>
       <header>
@@ -40,7 +41,7 @@ const Header = () => {
                 <button className="login-btn">
                   <img
                     className="login-img-useravatar"
-                    src={user.image.url}
+                    src={user?.imageUrl}
                     alt="user.image._id"
                   />
                   <h4>Dashboard</h4>

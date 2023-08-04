@@ -7,7 +7,9 @@ import MyFurnitureSlider from "../../components/MyFurnitureSlider/MyFurnitureSli
 
 const UserProfile = () => {
   const params = useParams();
+
   const userHandle = params.userHandle;
+
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
