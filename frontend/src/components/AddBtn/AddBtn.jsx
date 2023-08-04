@@ -6,15 +6,13 @@ import { UserContext } from "../../context/UserContext";
 
 const AddBtn = (props) => {
   const [furnitureId, setFurnitureId] = useState();
-  const [userId, setUserId] = useState();
   const { user } = useContext(UserContext);
 
   const addItemToUser = async () => {
     const furnitureId = props.furnitureID;
-    const userId = props.userId;
 
     const updateUserItems = await axios.put(
-      `/api/addFurnitureToUser/${loginUserId}`,
+      `/api/addFurnitureToUser/${user?.data?._id}`,
       { _id: user._id, inventoryId: furnitureId }
     );
   };

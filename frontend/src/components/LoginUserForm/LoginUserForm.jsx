@@ -9,7 +9,7 @@ export default function Login() {
   const [responseData, setResponseData] = useState([]);
 
   const [userHandle, setUserHandle] = useState();
-  const { refetch, isLoggedIn } = useContext(UserContext);
+  const { refetch, isLoggedIn, user, setUser } = useContext(UserContext);
   const nav = useNavigate();
   const [error, setError] = useState(null);
   const [loginSuccess, setLoginSuccess] = useState(false);
@@ -18,13 +18,8 @@ export default function Login() {
     setError(null);
     const data = new FormData(e.currentTarget);
     try {
-      const resp = await axios.post("/api/user/login", data);
+      const resp = await axios.post("/api/login", data);
       refetch();
-      setLoginSuccess(true);
-
-      setResponseData(resp.data.data);
-
-      setUserHandle(resp.data.data.userhandle);
       setTimeout(() => {
         nav(`/user/${resp.data.data.userhandle}`);
       }, 2000);

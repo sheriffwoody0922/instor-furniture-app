@@ -19,17 +19,21 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("/api/user/secure")
-      .then(({ data }) => {
-        setUser(data);
+      .get("/api/secure")
+      .then((res) => {
+        // console.log("Server Response:", res); // Response
+        setUser(res.data);
       })
       .catch((e) => {
+        console.error("Error fetching user:", e);
         setUser(null);
       });
   }, [shouldRefetch]);
 
   return (
-    <UserContext.Provider value={{ user, isLoggedIn: !!user, refetch, logout }}>
+    <UserContext.Provider
+      value={{ setUser, user, isLoggedIn: !!user, refetch, logout }}
+    >
       {children}
     </UserContext.Provider>
   );

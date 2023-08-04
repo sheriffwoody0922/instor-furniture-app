@@ -11,7 +11,7 @@ const CreateUserForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const response = await axios.post("/api/user/signup", formData);
+    const response = await axios.post("/api/signup", formData);
     console.log(response);
     e.target.reset();
   };

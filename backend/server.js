@@ -65,14 +65,14 @@ app.delete("/api/deleteFurniture/:id", deleteFurniture);
 
 // Definiere die Routen für die User-Endpoints und verknüpfe sie mit den entsprechenden Controller-Funktionen
 app.get("/api/user", getAllUserTwo);
-app.get("/api/user/:userhandle", authenticateToken, getUserByHandleOrId);
+app.get("/api/user/:userHandleOrId", authenticateToken, getUserByHandleOrId);
 app.post("/api/addUser", upload.single("image"), addUser);
 app.put("/api/updateUser/:id", upload.single("image"), updateUser);
 app.put("/api/addFurnitureToUser/:id", addFurnitureToUser);
 app.delete("/api/deleteUser/:id", deleteUser);
-app.post("/api/user/login", upload.single("image"), loginUser);
-app.post("/api/user/signup", upload.single("image"), signupUser);
-app.get("/api/user/secure", authenticateToken, authenticateUser);
+app.post("/api/login", upload.single("image"), loginUser);
+app.post("/api/signup", upload.single("image"), signupUser);
+app.get("/api/secure", authenticateToken, authenticateUser);
 app.get("/api/userlogout", logoutUser);
 
 // Definiere einen Catch-All-Route für alle anderen Anfragen und sende die Index-Datei des Frontends
