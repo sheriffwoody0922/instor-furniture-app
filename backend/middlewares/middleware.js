@@ -11,9 +11,6 @@ export const upload = multer({ storage: multer.memoryStorage() });
 // Erstelle eine Express-App und speichere sie in der Variable 'app'
 export const app = express();
 
-// // Verwende die Middleware 'cors', um Cross-Origin Resource Sharing (CORS) zu ermöglichen
-// app.use(cors());
-
 // Verwende die Middleware 'morgan' im "dev"-Modus, um HTTP-Requests und Antworten in der Konsole zu protokollieren
 app.use(morgan("dev"));
 

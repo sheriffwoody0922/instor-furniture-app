@@ -125,14 +125,34 @@ export const getAllUserTwo = async (req, res) => {
 export const getUserByHandleOrId = async (req, res) => {
   try {
     const { userHandleOrId } = req.params;
-    // Rufe das Möbelstück aus der Datenbank anhand seiner ID (req.params.id) ab
-    const user = await User.findOne({ userHandleOrId });
-    // Sende das Möbelstück als Antwort zurück
+
+    //  ' console.log("userhandle", userHandleOrId);'
+    let prop;
+    if (userHandleOrId[0] === "@") {
+      prop = "userhandle";
+    } else {
+      prop = "_id";
+    }
+
+    const user = await User.findOne({ [prop]: userHandleOrId });
+
+    // const user = await User.findOne({ userhandle: userHandleOrId });
+
+    // Check if the user exists
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    // Check if the requested user is the same as the authenticated user
+    if (user.email !== req.userEmail) {
+      return res.status(403).send("Forbidden");
+    }
+
+    // If the user is authorized, send the user data as the response
     res.send(user);
-    // Gebe das Möbelstück auch in der Konsole aus
     console.log(user);
   } catch (err) {
-    // Bei einem Fehler logge den Fehler in der Konsole und sende den Statuscode 500 zurück
+    // Handle errors appropriately
     console.log(err);
     res.sendStatus(500);
   }
@@ -339,11 +359,14 @@ export const loginUser = async (req, res) => {
     });
   }
 
+  const imageUrl = user.image.url;
+
+  const { userhandle, _id } = user;
+
   const passwordIsValid = await user.verifyPassword(password);
 
   if (passwordIsValid) {
-    const token = generateAccessToken({ email });
-    console.log("token");
+    const token = generateAccessToken({ email, userhandle, _id, imageUrl });
     res.cookie("auth", token, { httpOnly: true, maxAge: hoursInMillisec(1) });
     res.send({ message: "Success", data: user });
   } else {
@@ -357,8 +380,13 @@ export const loginUser = async (req, res) => {
 };
 
 export const authenticateUser = async (req, res) => {
-  console.log(req.userEmail);
-  res.send({ email: req.userEmail });
+  // console.log("authenticateuser", req.userData);
+  res.send({
+    email: req.userEmail,
+    imageUrl: req.userImage,
+    userhandle: req.userHandle,
+    _id: req.userId,
+  });
 };
 
 export const logoutUser = async (req, res) => {
