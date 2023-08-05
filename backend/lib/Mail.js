@@ -1,4 +1,4 @@
-// import formData from "form-data";
+import FormData from "form-data";
 import Mailgun from "mailgun.js";
 
 // Configure Mailgun Client
