@@ -26,6 +26,7 @@ export const ResetToken = model("ResetToken", resetTokenSchema);
 export const createResetToken = async (userEmail) => {
   // Check if user exists
   const user = await User.findOne({ email: userEmail });
+
   if (!user) {
     throw new Error("No User with this email");
   }
