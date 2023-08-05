@@ -17,15 +17,6 @@ import Banner from "../../components/Banner/Banner";
 import Footer from "../../components/Footer/Footer";
 // Definiere die React-Komponente 'Home'
 const Home = () => {
-  const [allfurnitures, setAllFurnitures] = useState();
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get("/api/furniture");
-      setAllFurnitures(data);
-    };
-    fetchData();
-  }, []);
-
   return (
     <>
       <Header />
@@ -37,7 +28,7 @@ const Home = () => {
         </section>
         <Banner />
         <CategoryBanner />
-        <PopularArticlesGrid productData={allfurnitures} />
+        <PopularArticlesGrid />
       </main>
       <Footer />
     </>

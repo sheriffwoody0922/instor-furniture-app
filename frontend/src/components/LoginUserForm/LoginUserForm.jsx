@@ -22,7 +22,7 @@ export default function Login() {
       e.target.reset();
     } catch (e) {
       console.log(e);
-      setError("Bitte überprüfe deine Eingabe");
+      setError("Bitte überprüfe dein Passwort und deine Emailadresse");
       e.target.reset();
     }
   };
@@ -60,6 +60,7 @@ export default function Login() {
               </Link>
             </div>
           </form>
+          <Link to="/forgotpassword">Du hast dein Passwort vergessen?</Link>
         </div>
       )}
       {isLoggedIn && (
