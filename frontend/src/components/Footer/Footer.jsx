@@ -13,7 +13,6 @@ const Footer = () => {
           <img src={youtubeicon} alt="youtube" />
         </div>
         <h3>Instor 2023</h3>
-        <div className="darkmode-toggle"></div>
       </footer>
     </>
   );

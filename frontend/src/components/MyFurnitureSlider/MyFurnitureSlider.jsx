@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import DeleteBtn from "../DeleteBtn/DeleteBtn";
+import AddBtn from "../AddBtn/AddBtn";
+import EditBtn from "../EditBtn/EditBtn";
+import { Link } from "react-router-dom";
+
+import "./MyFurnitureSlider.css";
 
 const MyFurnitureSlider = (props) => {
   const userInventory = props.userData.inventory;
@@ -88,35 +94,68 @@ const MyFurnitureSlider = (props) => {
   }
 
   return (
-    <div>
-      <div>
-        <h2>Small Furniture:</h2>
-        {smallStuffData.map((item) => (
-          <div key={item._id}>
-            <p>{item.title}</p>
-            {/* Render other properties of the small furniture item */}
+    <section className="user-furnituer-list-container">
+      <h2 className="size-title">Small Furniture:</h2>
+      <div className="small-furniture-container">
+        {smallStuffData.map((furniture) => (
+          <div key={furniture._id} className="furniture-item">
+            <Link to={`/furniture/${furniture._id}`}>
+              <div
+                className="furniture-img-container"
+                style={{ backgroundImage: `url(${furniture.image.url})` }}
+              ></div>
+            </Link>
+            <div className="descr-container">
+              <p>{furniture.room}</p>
+              <h2>{furniture.title}</h2>
+              <p>Beschreibung</p>
+              <p className="descr-txt">{furniture.description}</p>
+              <p>Größe: {furniture.size}</p>
+            </div>
           </div>
         ))}
       </div>
-      <div>
-        <h2>Medium Furniture:</h2>
-        {middleStuffData.map((item) => (
-          <div key={item._id}>
-            <p>{item.title}</p>
-            {/* Render other properties of the medium furniture item */}
+      <h2 className="size-title">Medium Furniture:</h2>
+      <div className="medium-furniture-container">
+        {middleStuffData.map((furniture) => (
+          <div key={furniture._id} className="furniture-item">
+            <Link to={`/furniture/${furniture._id}`}>
+              <div
+                className="furniture-img-container"
+                style={{ backgroundImage: `url(${furniture.image.url})` }}
+              ></div>
+            </Link>
+            <div className="descr-container">
+              <p>{furniture.room}</p>
+              <h2>{furniture.title}</h2>
+              <p>Beschreibung</p>
+              <p className="descr-txt">{furniture.description}</p>
+              <p>Größe: {furniture.size}</p>
+            </div>
           </div>
         ))}
       </div>
-      <div>
-        <h2>Large Furniture:</h2>
-        {bigStuffData.map((item) => (
-          <div key={item._id}>
-            <p>{item.title}</p>
-            {/* Render other properties of the large furniture item */}
+      <h2 className="size-title">Large Furniture:</h2>
+      <div className="large-furniture-container">
+        {bigStuffData.map((furniture) => (
+          <div key={furniture._id} className="furniture-item">
+            <Link to={`/furniture/${furniture._id}`}>
+              <div
+                className="furniture-img-container"
+                style={{ backgroundImage: `url(${furniture.image.url})` }}
+              ></div>
+            </Link>
+            <div className="descr-container">
+              <p>{furniture.room}</p>
+              <h2>{furniture.title}</h2>
+              <p>Beschreibung</p>
+              <p className="descr-txt">{furniture.description}</p>
+              <p>Größe: {furniture.size}</p>
+            </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

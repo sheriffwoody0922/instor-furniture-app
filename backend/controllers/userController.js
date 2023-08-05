@@ -3,8 +3,8 @@ import {
   uploadToCloudinaryDirUser,
   deleteFromCloudinaryDirUser,
 } from "../helpers/cloudinaryHelperUser.js";
-
 import { generateAccessToken } from "../middlewares/authenticateToken.js";
+import { createResetToken } from "../models/ResetTokenModel.js";
 
 import dotenv from "dotenv";
 import "../config/config.js";
@@ -394,4 +394,17 @@ export const logoutUser = async (req, res) => {
   res.clearCookie("auth");
   res.send("OK");
   console.log("cookies sollten gelöscht sein");
+};
+export const resetUserPassword = async (req, res) => {
+  const { email } = req.body;
+  try {
+    await createResetToken(email);
+    return res.sendStatus(200);
+  } catch (e) {
+    if (e?.message === "No User with this email") {
+      return res.status(404).send({ error: "User not found" });
+    }
+
+    return res.status(500).send({ error: "Unknown Error occurred" });
+  }
 };

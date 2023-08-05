@@ -8,6 +8,8 @@ import "./FurnitureItem.css";
 import DeleteBtn from "../DeleteBtn/DeleteBtn";
 import AddBtn from "../AddBtn/AddBtn";
 
+import { Link } from "react-router-dom";
+
 // Definiere die React-Komponente 'FurnitureItem'
 const FurnitureItem = ({
   data,
@@ -35,11 +37,12 @@ const FurnitureItem = ({
       <section className="furniture-item-container">
         {furnitureData?.map((furniture) => (
           <div key={furniture._id} className="furniture-item">
-            <div
-              className="furniture-img-container"
-              style={{ backgroundImage: `url(${furniture.image.url})` }}
-            ></div>
-
+            <Link to={`/furniture/${furniture._id}`}>
+              <div
+                className="furniture-img-container"
+                style={{ backgroundImage: `url(${furniture.image.url})` }}
+              ></div>
+            </Link>
             <div className="descr-container">
               <p>{furniture.room}</p>
               <h2>{furniture.title}</h2>
@@ -58,7 +61,7 @@ const FurnitureItem = ({
                 setQueryKey={setQueryKey}
                 setCategoryName={setCategoryName}
               />
-              <AddBtn furnitureID={furniture._id} userId={userId} />
+              <AddBtn furnitureID={furniture._id} />
             </div>
           </div>
         ))}

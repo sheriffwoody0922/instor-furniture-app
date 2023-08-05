@@ -6,13 +6,9 @@ import { UserContext } from "../../context/UserContext";
 import BackButtonGrey from "../BackButtonGrey/BackButtonGrey";
 
 export default function Login() {
-  const [responseData, setResponseData] = useState([]);
-
-  const [userHandle, setUserHandle] = useState();
   const { refetch, isLoggedIn, user, setUser } = useContext(UserContext);
   const nav = useNavigate();
   const [error, setError] = useState(null);
-  const [loginSuccess, setLoginSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -26,7 +22,7 @@ export default function Login() {
       e.target.reset();
     } catch (e) {
       console.log(e);
-      setError("Bitte überprüfe deine Eingabe");
+      setError("Bitte überprüfe dein Passwort und deine Emailadresse");
       e.target.reset();
     }
   };
@@ -64,6 +60,7 @@ export default function Login() {
               </Link>
             </div>
           </form>
+          <Link to="/forgotpassword">Du hast dein Passwort vergessen?</Link>
         </div>
       )}
       {isLoggedIn && (

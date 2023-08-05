@@ -27,6 +27,7 @@ import {
   signupUser,
   authenticateUser,
   logoutUser,
+  resetUserPassword,
 } from "./controllers/userController.js";
 
 // Importiere die Konfigurationsdatei und das Modell aus den entsprechenden Dateien
@@ -57,23 +58,39 @@ const FE_INDEX = join(__dirname, "../frontend/dist/index.html");
 
 // Routen
 // Definiere die Routen für die Möbel-Endpoints und verknüpfe sie mit den entsprechenden Controller-Funktionen
-app.get("/api/furniture", getAllFurnitureTwo);
-app.get("/api/furniture/:id", getFurnitureById);
-app.post("/api/addFurniture", upload.single("image"), addFurniture);
-app.put("/api/updateFurniture/:id", upload.single("image"), updateFurniture);
-app.delete("/api/deleteFurniture/:id", deleteFurniture);
+app.get("/api/furniture", authenticateToken, getAllFurnitureTwo);
+app.get("/api/furniture/:id", authenticateToken, getFurnitureById);
+app.post(
+  "/api/addFurniture",
+  authenticateToken,
+  upload.single("image"),
+  addFurniture
+);
+app.put(
+  "/api/updateFurniture/:id",
+  authenticateToken,
+  upload.single("image"),
+  updateFurniture
+);
+app.delete("/api/deleteFurniture/:id", authenticateToken, deleteFurniture);
 
 // Definiere die Routen für die User-Endpoints und verknüpfe sie mit den entsprechenden Controller-Funktionen
-app.get("/api/user", getAllUserTwo);
+app.get("/api/user", authenticateToken, getAllUserTwo);
 app.get("/api/user/:userHandleOrId", authenticateToken, getUserByHandleOrId);
 app.post("/api/addUser", upload.single("image"), addUser);
-app.put("/api/updateUser/:id", upload.single("image"), updateUser);
-app.put("/api/addFurnitureToUser/:id", addFurnitureToUser);
-app.delete("/api/deleteUser/:id", deleteUser);
+app.put(
+  "/api/updateUser/:id",
+  authenticateToken,
+  upload.single("image"),
+  updateUser
+);
+app.put("/api/addFurnitureToUser/:id", authenticateToken, addFurnitureToUser);
+app.delete("/api/deleteUser/:id", authenticateToken, deleteUser);
 app.post("/api/login", upload.single("image"), loginUser);
 app.post("/api/signup", upload.single("image"), signupUser);
 app.get("/api/secure", authenticateToken, authenticateUser);
 app.get("/api/userlogout", logoutUser);
+app.post("/api/resetPassword", upload.none(), resetUserPassword);
 
 // Definiere einen Catch-All-Route für alle anderen Anfragen und sende die Index-Datei des Frontends
 app.get("*", (req, res) => res.sendFile(FE_INDEX));

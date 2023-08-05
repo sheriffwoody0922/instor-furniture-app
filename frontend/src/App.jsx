@@ -14,6 +14,7 @@ import AllFurniture from "./pages/AllFurniture/AllFurniture";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 
 // Definiere die App-Komponente
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/user/:userHandle" element={<UserProfile />} />
         <Route path="/userprofile" element={<UserProfile />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
       </Routes>
     </>
   );

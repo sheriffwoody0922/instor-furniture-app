@@ -55,7 +55,7 @@
   color: #e34a4a;
 }
 .furniture-img-container {
-  height: 60%;
+  height: 100%;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 2rem;
@@ -67,4 +67,9 @@
   align-items: center;
   padding: 1rem;
   gap: 1rem;
+}
+
+.furniture-item a {
+  width: 100%;
+  height: 100%;
 }
