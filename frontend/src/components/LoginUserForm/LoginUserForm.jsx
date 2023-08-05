@@ -6,13 +6,9 @@ import { UserContext } from "../../context/UserContext";
 import BackButtonGrey from "../BackButtonGrey/BackButtonGrey";
 
 export default function Login() {
-  const [responseData, setResponseData] = useState([]);
-
-  const [userHandle, setUserHandle] = useState();
   const { refetch, isLoggedIn, user, setUser } = useContext(UserContext);
   const nav = useNavigate();
   const [error, setError] = useState(null);
-  const [loginSuccess, setLoginSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);

@@ -34,19 +34,21 @@ const Header = () => {
           )}
           {isLoggedIn && (
             <>
-              <button type="button" onClick={logout}>
-                Logout
-              </button>
-              <NavLink to={`/user/${user.userhandle}`}>
-                <button className="login-btn">
-                  <img
-                    className="login-img-useravatar"
-                    src={user?.imageUrl}
-                    alt="user.image._id"
-                  />
-                  <h4>Dashboard</h4>
+              <div className="login-succesfull-container">
+                <button type="button" onClick={logout} className="logout-btn">
+                  Logout
                 </button>
-              </NavLink>
+                <NavLink to={`/user/${user.userhandle}`}>
+                  <button className="login-btn">
+                    <img
+                      className="login-img-useravatar"
+                      src={user?.imageUrl}
+                      alt="user.image._id"
+                    />
+                    <h4>Dashboard</h4>
+                  </button>
+                </NavLink>
+              </div>
             </>
           )}
         </nav>
