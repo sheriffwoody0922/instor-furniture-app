@@ -5,7 +5,7 @@ import Mailgun from "mailgun.js";
 const mailgun = new Mailgun(FormData);
 
 // Our sandbox domain form mailgun
-const sandbox = "sandbox461d1952c2b64a89ab28521afac60da7.mailgun.org";
+const sandbox = process.env.MAILGUN_API_KEY;
 
 // When send mail gets no parameter use this default setup
 const defaultOptions = {
@@ -24,9 +24,7 @@ export const sendMail = ({ to, subject, html } = defaultOptions) => {
   if (!mg) {
     mg = mailgun.client({
       username: "api",
-      key:
-        process.env.MAILGUN_API_KEY ||
-        "981c599f05be9997d32beb12fb4e76cc-4e034d9e-0b028a7e",
+      key: process.env.MAILGUN_API_KEY,
     });
   }
 
