@@ -399,6 +399,7 @@ export const resetUserPassword = async (req, res) => {
   const { email } = req.body;
   try {
     await createResetToken(email);
+    console.log("reset password for ", email);
     return res.sendStatus(200);
   } catch (e) {
     if (e?.message === "No User with this email") {
