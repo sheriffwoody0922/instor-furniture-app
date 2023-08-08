@@ -25,6 +25,7 @@ export const ResetToken = model("ResetToken", resetTokenSchema);
 
 export const createResetToken = async (userEmail) => {
   // Check if user exists
+  console.log("userEmail", userEmail);
   const user = await User.findOne({ email: userEmail });
 
   if (!user) {
@@ -33,13 +34,13 @@ export const createResetToken = async (userEmail) => {
 
   // if token is already present delete it
   // there should be only one reset token per user
-  let token = await ResetToken.findOne({ userId: user.id });
+  let token = await ResetToken.findOne({ userId: user._id });
   if (token) await token.deleteOne();
 
   const resetToken = crypto.randomBytes(64).toString("hex");
 
   await ResetToken.create({
-    userId: user.id,
+    userId: user._id,
     token: resetToken,
     // Optional dank default value
     createdAt: Date.now(),
@@ -48,7 +49,7 @@ export const createResetToken = async (userEmail) => {
   // URL von unserer Render APP (local via .env setzen)
   const clientURL = process.env.RENDER_EXTERNAL_URL;
   const resetURL = new URL(
-    `/passwordReset?token=${resetToken}&id=${user.id}`,
+    `/forgotpassword?token=${resetToken}&id=${user._id}`,
     clientURL
   );
 

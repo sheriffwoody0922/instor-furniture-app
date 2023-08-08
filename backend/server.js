@@ -4,6 +4,10 @@ import dotenv from "dotenv";
 // Importiere die Middleware 'app' und 'upload' aus der Datei './middlewares/middleware.js'
 import { app, upload } from "./middlewares/middleware.js";
 import { authenticateToken } from "./middlewares/authenticateToken.js";
+import {
+  createResetToken,
+  validateResetToken,
+} from "./models/ResetTokenModel.js";
 
 // Importiere die Controller-Funktionen für die Möbel-Endpoints
 import {
@@ -28,6 +32,7 @@ import {
   authenticateUser,
   logoutUser,
   resetUserPassword,
+  resetUserPasswordConfirm,
 } from "./controllers/userController.js";
 
 // Importiere die Konfigurationsdatei und das Modell aus den entsprechenden Dateien
@@ -90,7 +95,8 @@ app.post("/api/login", upload.single("image"), loginUser);
 app.post("/api/signup", upload.single("image"), signupUser);
 app.get("/api/secure", authenticateToken, authenticateUser);
 app.get("/api/userlogout", logoutUser);
-app.post("/api/resetPassword", upload.none(), resetUserPassword);
+app.post("/api/resetPassword", resetUserPassword);
+app.post("/api/resetPasswordConfirm", resetUserPasswordConfirm);
 
 // Definiere einen Catch-All-Route für alle anderen Anfragen und sende die Index-Datei des Frontends
 app.get("*", (req, res) => res.sendFile(FE_INDEX));
