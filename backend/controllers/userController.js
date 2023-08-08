@@ -4,7 +4,10 @@ import {
   deleteFromCloudinaryDirUser,
 } from "../helpers/cloudinaryHelperUser.js";
 import { generateAccessToken } from "../middlewares/authenticateToken.js";
-import { createResetToken } from "../models/ResetTokenModel.js";
+import {
+  createResetToken,
+  validateResetToken,
+} from "../models/ResetTokenModel.js";
 
 import dotenv from "dotenv";
 import "../config/config.js";
@@ -15,16 +18,12 @@ const hoursInMillisec = (hours) => {
 };
 export const getAllUsers = async (req, res) => {
   try {
-    // Rufe alle Möbelstücke aus der Datenbank basierend auf den Anfragenparametern (req.query) ab. Wenn keine query übermittelt werden, dann werden alle Möbelstücke aus der Datenbank geladen. zb die Url "./api/user?size=gross"
     const user = await User.find(req.query);
     console.log("hi", user);
 
-    // Sende die Möbelstücke als Antwort zurück
     res.send(user);
-    // Gebe die Möbelstücke auch in der Konsole aus
     console.log(user);
   } catch (err) {
-    // Bei einem Fehler logge den Fehler in der Konsole und sende den Statuscode 500 zurück
     console.log(err);
     res.sendStatus(500);
   }
@@ -390,10 +389,8 @@ export const authenticateUser = async (req, res) => {
 };
 
 export const logoutUser = async (req, res) => {
-  console.log(req.body);
   res.clearCookie("auth");
   res.send("OK");
-  console.log("cookies sollten gelöscht sein");
 };
 export const resetUserPassword = async (req, res) => {
   const { email } = req.body;
@@ -407,5 +404,25 @@ export const resetUserPassword = async (req, res) => {
     }
 
     return res.status(500).send({ error: "Unknown Error occurred" });
+  }
+};
+export const resetUserPasswordConfirm = async (req, res) => {
+  const { id, token, password } = req.body;
+  const isValidResetProcess = validateResetToken(id, token);
+  try {
+    if (!isValidResetProcess) {
+      throw new Error("NonValidResetProcess");
+    }
+
+    const user = await User.findById(id);
+    user.setPassword(password);
+
+    await user.save();
+    return res.send({
+      data: { message: "New password confirmed" },
+    });
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({ error: "Something went wrong" });
   }
 };
