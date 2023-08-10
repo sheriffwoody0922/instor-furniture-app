@@ -99,3 +99,12 @@ nav a button {
   transition: all ease-in-out 50ms;
   border: none;
 }
+@media (max-width: 991.98px) {
+  nav {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .dropdown-content {
+    position: static;
+  }
+}

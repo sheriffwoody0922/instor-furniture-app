@@ -13,3 +13,10 @@
   align-items: flex-start;
   width: 100%;
 }
+
+@media (max-width: 991.98px) {
+  .category-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+}

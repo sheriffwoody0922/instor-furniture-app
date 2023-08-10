@@ -84,3 +84,20 @@ small {
   font-family: poppins-regular;
   font-size: 2rem;
 }
+@media (max-width: 991.98px) {
+  h1 {
+    font-size: 2.6rem;
+  }
+  h2 {
+    font-size: 2.4rem;
+  }
+  h3 {
+    font-size: 2.2rem;
+  }
+  p {
+    font-size: 2rem;
+  }
+  main {
+    padding: 0 3rem;
+  }
+}

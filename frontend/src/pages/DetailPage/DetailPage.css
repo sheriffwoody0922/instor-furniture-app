@@ -36,6 +36,7 @@
   display: flex;
   gap: 5rem;
   align-items: center;
+  justify-content: space-between;
 }
 
 .btn-container {
@@ -60,4 +61,25 @@
 }
 .title-with-update-container {
   justify-content: space-between;
+}
+@media (max-width: 991.98px) {
+  .details-container {
+    flex-direction: column;
+    height: unset;
+  }
+  .img-outer-container {
+    width: 100%;
+    height: 40vh;
+  }
+  .text-outer-container {
+    flex-direction: column;
+    width: auto;
+  }
+  .room-with-update-container,
+  .title-with-update-container,
+  .size-with-update-container {
+    flex-direction: row;
+
+    margin-bottom: 2rem;
+  }
 }
