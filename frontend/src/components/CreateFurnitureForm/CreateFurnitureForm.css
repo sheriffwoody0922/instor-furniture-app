@@ -40,3 +40,20 @@ textarea {
 .abortt-btn {
   width: 100%;
 }
+@media (max-width: 991.98px) {
+  .add-new-item-btn,
+  .new-furniture-form-container {
+    position: static;
+  }
+  .new-furniture-form-container form {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .new-furniture-form-container input,
+  .submit-btn,
+  textarea {
+    width: 100%;
+  }
+}

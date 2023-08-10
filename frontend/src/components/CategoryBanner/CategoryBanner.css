@@ -27,3 +27,8 @@
   width: 100%;
   border-radius: 2rem;
 }
+@media (max-width: 991.98px) {
+  .category-banner {
+    flex-direction: column;
+  }
+}

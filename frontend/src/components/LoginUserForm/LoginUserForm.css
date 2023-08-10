@@ -133,3 +133,8 @@
   border: 0;
   padding: 1.2rem 0;
 }
+@media (max-width: 991.98px) {
+  .login-user-form-container {
+    width: 100%;
+  }
+}

@@ -45,7 +45,13 @@ const CreateFurnitureForm = ({
             <input type="text" placeholder="TITLE" name="title" required />
             <input type="text" placeholder="ROOM" name="room" required />
             <input type="text" placeholder="SIZE" name="size" required />
-            <input type="file" placeholder="IMAGE" name="image" required />
+            <input
+              type="file"
+              placeholder="IMAGE"
+              name="image"
+              required
+              className="file-upload-btn"
+            />
             <textarea
               className="add-text-input-field"
               placeholder="ADD TEXT"

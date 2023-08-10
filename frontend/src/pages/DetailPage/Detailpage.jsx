@@ -64,14 +64,14 @@ const Detailpage = () => {
                 id={idFurniture}
                 setRefresh={setRefresh}
               />
-              <div className="size-with-update-container">
-                <p>Größe: {furniture.size}</p>
-                <UpdateBtn
-                  itemKeyName={"size"}
-                  id={idFurniture}
-                  setRefresh={setRefresh}
-                />
-              </div>
+            </div>
+            <div className="size-with-update-container">
+              <p>Größe: {furniture.size}</p>
+              <UpdateBtn
+                itemKeyName={"size"}
+                id={idFurniture}
+                setRefresh={setRefresh}
+              />
             </div>
             <ReviewBox />
             <div className="description-with-update-container">

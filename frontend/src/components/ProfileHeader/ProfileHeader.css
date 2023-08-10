@@ -18,3 +18,15 @@
 .user-txt-container {
   font-size: 2rem;
 }
+@media (max-width: 991.98px) {
+  .header-container-user {
+    flex-direction: column;
+    align-items: center;
+    height: unset;
+    margin: unset;
+  }
+  .user-img-container {
+    height: 25vh;
+    width: 60%;
+  }
+}
