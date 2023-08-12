@@ -17,6 +17,11 @@ export const UserProvider = ({ children }) => {
     nav("/");
   };
 
+  const colors = {
+    Sea: "#a2ccb6",
+    Sand: "#fceeb5",
+    Peach: "#ee786e",
+  };
   useEffect(() => {
     axios
       .get("/api/secure")

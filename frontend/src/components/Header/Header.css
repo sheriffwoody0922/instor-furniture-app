@@ -87,7 +87,7 @@ nav a button {
   height: 2.5rem;
   border-radius: 100%;
 }
-.login-succesfull-container {
+.login-container {
   display: flex;
   gap: 2rem;
   flex-direction: row;
