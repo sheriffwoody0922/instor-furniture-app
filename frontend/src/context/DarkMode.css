@@ -45,6 +45,11 @@
 .dark-mode .descr-container {
   background: #5c5c5c;
 }
+
+.dark-mode .popular-furniture-item a {
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
 .dark-mode .add-new-item-btn img {
   filter: invert();
 }
