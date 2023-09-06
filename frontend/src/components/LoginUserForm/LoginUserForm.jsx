@@ -12,21 +12,38 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-    const data = new FormData(e.currentTarget);
     try {
-      const resp = await axios.post("/api/login", data);
+      let formData;
+      if (e.target.value === "testlogin") {
+        formData = {
+          email: "test@test.de",
+          password: "test",
+        };
+      } else {
+        formData = new FormData(e.currentTarget);
+      }
+
+      const resp = await axios.post("/api/login", formData);
       refetch();
+
       setTimeout(() => {
         nav(`/user/${resp.data.data.userhandle}`);
       }, 2000);
+
       e.target.reset();
-    } catch (e) {
-      console.log(e);
-      setError("Bitte überprüfe dein Passwort und deine Emailadresse");
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        setError(
+          "Ungültige Anmeldeinformationen. Bitte überprüfe deine E-Mail und dein Passwort."
+        );
+      } else {
+        setError(
+          "Ein Fehler ist aufgetreten. Bitte versuche es später erneut."
+        );
+      }
       e.target.reset();
     }
   };
-
   return (
     <>
       {!isLoggedIn && (
@@ -58,6 +75,13 @@ export default function Login() {
                   Noch kein Konto? Konto anlegen
                 </button>
               </Link>
+              <button
+                className="submit-btn"
+                onClick={handleSubmit}
+                value={"testlogin"}
+              >
+                Login als Testuser
+              </button>
             </div>
           </form>
           <Link to="/forgotpassword">Du hast dein Passwort vergessen?</Link>
