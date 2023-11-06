@@ -20,7 +20,7 @@ The Furniture Organizer App is a full-stack web application based on the MERN (M
 
 ## Demo
 
-https://furniture-0vsl.onrender.com
+https://instor.alpaycelik.dev
 
 ## Run Locally
 
