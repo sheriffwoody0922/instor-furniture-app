@@ -27,7 +27,7 @@ https://instor.alpaycelik.dev
 Clone the project
 
 ```bash
-  git clone https://github.com/AlpayC/Furniture_MERN
+  git clone https://github.com/sheriffwoody0922/instor-furniture-app
 ```
 
 Go to the project directory and start the server incl. frontend
@@ -148,6 +148,7 @@ To run this project, you will need to add the following environment variables to
 
 ## Authors
 
+- [@SheriffWoody](https://github.com/sheriffwoody0922/)
 - [@AlpayC](https://www.github.com/AlpayC)
 - [@BorisD2023](https://github.com/BorisD2023)
 
